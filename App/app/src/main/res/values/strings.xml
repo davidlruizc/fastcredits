@@ -5,7 +5,7 @@
     <string name="password">Contraseña</string>
     <string name="login">Inicias sesión</string>
     <string name="swipe_left_for_register">Registrar ahora</string>
-    <string name="register">Registrar Prestamista</string>
+    <string name="register">Registrar</string>
     <string name="document">Documento</string>
     <string name="name">Nombres</string>
     <string name="lastName">Apellidos</string>
@@ -16,24 +16,14 @@
     <string name="address">Dirección</string>
     <string name="homePhone">Teléfono Fijo</string>
     <string name="phone">Celular</string>
-    <string name="re_type_password">Celular</string>
+    <string name="re_type_password">Confirmar contraseña</string>
     <string name="swipe_right_for_login">Ir a Iniciar sesión</string>
     <string-array name="countryList">
-        <item>Mercury</item>
-        <item>Venus</item>
-        <item>Earth</item>
-        <item>Mars</item>
-        <item>Jupiter</item>
-        <item>Saturn</item>
-        <item>Uranus</item>
-        <item>Neptune</item>
-        <item>Mercury</item>
-        <item>Venus</item>
-        <item>Earth</item>
-        <item>Mars</item>
-        <item>Jupiter</item>
-        <item>Saturn</item>
-        <item>Uranus</item>
-        <item>Neptune</item>
+        <item>Colombia</item>
     </string-array>
+    <string-array name="profileType">
+        <item>Prestamista</item>
+        <item>Cliente</item>
+    </string-array>
+    <string name="profileTypeTitle">Elegir tipo de perfil</string>
 </resources>

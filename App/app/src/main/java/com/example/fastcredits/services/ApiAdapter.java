@@ -7,9 +7,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiAdapter {
     private static ApiService API_SERVICE;
-    private static String baseUrl = "http://localhost:5000/countries";
+    private static String baseUrl = "http://192.168.0.6:5000/";
 
-    public static ApiService getCountries() {
+    public static ApiService getApiService() {
         // Creamos un interceptor y le indicamos el log level a usar
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
         logging.setLevel(HttpLoggingInterceptor.Level.BODY);
