@@ -2,23 +2,19 @@ import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { StoresModule } from './stores/stores.module';
-import { RidersModule } from './riders/riders.module';
 import { UsersModule } from './users/users.module';
-import { ProductsModule } from './products/products.module';
-import { OrdersModule } from './orders/orders.module';
+import { CountriesModule } from './countries/countries.module';
+import { AdminsModule } from './admins/admins.module';
 
 @Module({
   imports: [
     MongooseModule.forRoot(
-      'mongodb://admin:0315@34.67.253.16:27017/prod?authSource=admin',
+      'mongodb+srv://root:0315@cluster0.kn3nr.mongodb.net/FastCredits',
       { useNewUrlParser: true },
     ),
-    StoresModule,
-    RidersModule,
     UsersModule,
-    ProductsModule,
-    OrdersModule,
+    CountriesModule,
+    AdminsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
