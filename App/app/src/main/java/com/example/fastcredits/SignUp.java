@@ -1,14 +1,14 @@
 package com.example.fastcredits;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RadioButton;
+import android.widget.ArrayAdapter;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 
 public class SignUp extends Fragment {
 
@@ -21,7 +21,7 @@ public class SignUp extends Fragment {
                              Bundle savedInstanceState) {
         View localView = inflater.inflate(R.layout.activity_sign_up, container, false);
 
-        RadioGroup radioGroup = (RadioGroup) localView .findViewById(R.id.radioGroup);
+        RadioGroup radioGroup = (RadioGroup) localView.findViewById(R.id.radioGroup);
 
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
         {
@@ -38,6 +38,15 @@ public class SignUp extends Fragment {
                 }
             }
         });
+
+        Spinner spinner = (Spinner) localView.findViewById(R.id.countryList);
+        // Create an ArrayAdapter using the string array and a default spinner layout
+                ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(),
+                        R.array.countryList, android.R.layout.simple_spinner_item);
+        // Specify the layout to use when the list of choices appears
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Apply the adapter to the spinner
+                spinner.setAdapter(adapter);
 
 
         // Inflate the layout for this fragment
