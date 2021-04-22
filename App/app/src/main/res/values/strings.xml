@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">FastCredits</string>
+    <string name="tag">¡Ingresa ya!</string>
+    <string name="e_mail">Email</string>
+    <string name="password">Contraseña</string>
+    <string name="login">Inicias sesión</string>
+    <string name="swipe_left_for_register">Registrar ahora</string>
 </resources>
