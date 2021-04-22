@@ -5,4 +5,17 @@
     <string name="password">Contraseña</string>
     <string name="login">Inicias sesión</string>
     <string name="swipe_left_for_register">Registrar ahora</string>
+    <string name="register">Registrar Prestamista</string>
+    <string name="document">Documento</string>
+    <string name="name">Nombres</string>
+    <string name="lastName">Apellidos</string>
+    <string name="male">Hombre</string>
+    <string name="female">Mujer</string>
+    <string name="gender">Sexo</string>
+    <string name="country">País</string>
+    <string name="address">Dirección</string>
+    <string name="homePhone">Teléfono Fijo</string>
+    <string name="phone">Celular</string>
+    <string name="re_type_password">Celular</string>
+    <string name="swipe_right_for_login">Ir a Iniciar sesión</string>
 </resources>
