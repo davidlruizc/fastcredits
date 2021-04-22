@@ -1,4 +1,4 @@
-export class CreateUserDto {
+export class CreatePrestamistaDto {
   email: string;
   password: string;
   document: string;
