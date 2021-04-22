@@ -1,10 +1,10 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 
-export type UserDocument = User & Document;
+export type RuteroDocument = Rutero & Document;
 
 @Schema()
-export class User {
+export class Rutero {
   @Prop({ required: true })
   email: string;
 
@@ -40,6 +40,9 @@ export class User {
 
   @Prop({ required: true })
   state: boolean;
+
+  @Prop({ required: true })
+  active: boolean;
 }
 
-export const UserSchema = SchemaFactory.createForClass(User);
+export const RuteroSchema = SchemaFactory.createForClass(Rutero);

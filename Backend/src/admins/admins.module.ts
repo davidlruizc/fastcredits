@@ -6,7 +6,7 @@ import { Admin, AdminSchema } from './entities/admin.entity';
 import {
   Prestamista,
   PrestamistaSchema,
-} from 'src/users/entities/prestamista.entity';
+} from 'src/prestamista/entities/prestamista.entity';
 
 @Module({
   imports: [

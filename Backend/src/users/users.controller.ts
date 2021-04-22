@@ -2,7 +2,6 @@ import {
   Controller,
   Post,
   Body,
-  Put,
   Param,
   Get,
   HttpException,
@@ -10,8 +9,6 @@ import {
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
-import { UpdateUserDto } from './dto/update-user.dto';
-import { CreatePrestamistaDto } from './dto/create-prestamista.dto';
 import { ValidateUserDto } from './dto/validate-user.dto';
 
 @Controller('users')
@@ -21,12 +18,6 @@ export class UsersController {
   @Post('/signUp')
   async signUp(@Body() createUserDto: CreateUserDto) {
     const result = await this.usersService.create(createUserDto);
-    return { message: result };
-  }
-
-  @Post('/signUpPrestamista')
-  async signUpPrestamista(@Body() createUserDto: CreatePrestamistaDto) {
-    const result = await this.usersService.createPrestamista(createUserDto);
     return { message: result };
   }
 
@@ -40,6 +31,12 @@ export class UsersController {
       case 1:
         result = await this.usersService.validatePrestamista(validateUserDto);
         break;
+      case 2:
+        result = await this.usersService.validateRutero(validateUserDto);
+        break;
+      case 3:
+        result = await this.usersService.validateAdmin(validateUserDto);
+        break;
       default:
         throw new HttpException(
           'El rol ingresado no existe',
@@ -52,12 +49,6 @@ export class UsersController {
   @Get(':id')
   async getInformation(@Param('id') id: string) {
     const result = await this.usersService.getInformation(id);
-    return { data: result };
-  }
-
-  @Put(':id')
-  async update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
-    const result = await this.usersService.update(id, updateUserDto);
     return { data: result };
   }
 }

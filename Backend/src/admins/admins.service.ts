@@ -8,7 +8,7 @@ import { EnablePrestamistaDto } from './dto/enable-prestamista.dto';
 import {
   Prestamista,
   PrestamistaDocument,
-} from 'src/users/entities/prestamista.entity';
+} from 'src/prestamista/entities/prestamista.entity';
 
 @Injectable()
 export class AdminsService {
@@ -35,29 +35,14 @@ export class AdminsService {
     return 'El administrador ha sido creado exitosamente';
   }
 
-  async validateUser(createAdminDto: CreateAdminDto) {
-    const user = await this.adminModel.findOne({
-      email: createAdminDto.email,
-    });
-    if (user) {
-      const passMatch = await bcrypt.compare(
-        createAdminDto.password,
-        user.password,
-      );
-      if (passMatch) {
-        return user._id;
-      } else {
-        throw new HttpException(
-          'La contraseña ingresada es incorrecta',
-          HttpStatus.UNAUTHORIZED,
-        );
-      }
-    } else {
-      throw new HttpException(
-        'El usuario ingresado no existe',
-        HttpStatus.UNAUTHORIZED,
-      );
-    }
+  async pendingPrestamistas() {
+    const prestamistas = await this.prestamistaModel.find({ active: false });
+    return prestamistas;
+  }
+
+  async allPrestamistas() {
+    const prestamistas = await this.prestamistaModel.find();
+    return prestamistas;
   }
 
   async enablePrestamista(enablePrestamistaDto: EnablePrestamistaDto) {
@@ -65,6 +50,9 @@ export class AdminsService {
       enablePrestamistaDto.prestamistaId,
     );
     if (prestamista) {
+      prestamista.active = true;
+      await prestamista.save();
+      return 'El se ha activado exitosamente';
     } else {
       throw new HttpException(
         'El prestamista no existe',

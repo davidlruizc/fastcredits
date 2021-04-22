@@ -5,6 +5,8 @@ import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
 import { CountriesModule } from './countries/countries.module';
 import { AdminsModule } from './admins/admins.module';
+import { PrestamistaModule } from './prestamista/prestamista.module';
+import { RuteroModule } from './rutero/rutero.module';
 
 @Module({
   imports: [
@@ -15,6 +17,8 @@ import { AdminsModule } from './admins/admins.module';
     UsersModule,
     CountriesModule,
     AdminsModule,
+    PrestamistaModule,
+    RuteroModule,
   ],
   controllers: [AppController],
   providers: [AppService],

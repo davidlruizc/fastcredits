@@ -16,8 +16,9 @@ export class RuteroController {
   constructor(private readonly ruteroService: RuteroService) {}
 
   @Post('/signUp')
-  create(@Body() createRuteroDto: CreateRuteroDto) {
-    return this.ruteroService.create(createRuteroDto);
+  async create(@Body() createRuteroDto: CreateRuteroDto) {
+    const result = await this.ruteroService.create(createRuteroDto);
+    return { message: result };
   }
 
   @Get()

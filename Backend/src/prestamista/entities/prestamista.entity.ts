@@ -6,7 +6,7 @@ export type PrestamistaDocument = Prestamista & Document;
 @Schema()
 export class Prestamista {
   @Prop({ required: true })
-  username: string;
+  email: string;
 
   @Prop({ required: true })
   password: string;

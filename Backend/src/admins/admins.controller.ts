@@ -1,12 +1,4 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Put,
-  Param,
-  Delete,
-} from '@nestjs/common';
+import { Controller, Get, Post, Body } from '@nestjs/common';
 import { AdminsService } from './admins.service';
 import { CreateAdminDto } from './dto/create-admin.dto';
 import { EnablePrestamistaDto } from './dto/enable-prestamista.dto';
@@ -20,9 +12,15 @@ export class AdminsController {
     return await this.adminsService.create(createAdminDto);
   }
 
-  @Post('/signIn')
-  async signIn(@Body() createAdminDto: CreateAdminDto) {
-    const result = await this.adminsService.validateUser(createAdminDto);
+  @Get('/pendingPrestamistas')
+  async pendingPrestamistas() {
+    const result = await this.adminsService.pendingPrestamistas();
+    return { message: result };
+  }
+
+  @Get('/allPrestamistas')
+  async allPrestamistas() {
+    const result = await this.adminsService.allPrestamistas();
     return { message: result };
   }
 
