@@ -8,13 +8,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.fastcredits.models.Countries;
+import com.example.fastcredits.models.Lender;
+import com.example.fastcredits.models.LenderResponse;
 import com.example.fastcredits.services.ApiAdapter;
 
 import java.util.ArrayList;
@@ -37,6 +39,18 @@ public class SignUp extends Fragment {
     EditText password;
     EditText confirmPassword;
     String gender;
+
+    String documentText;
+    String namesText;
+    String lastNamesText;
+    String addressText;
+    String phoneHomeText;
+    String phoneText;
+    String emailText;
+    String passwordText;
+    String confirmPasswordText;
+    String genderText;
+    String countryText;
 
     public SignUp() {
         // Required empty public constructor
@@ -87,6 +101,26 @@ public class SignUp extends Fragment {
         adapterProfile.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerProfile.setAdapter(adapterProfile);
 
+        documentText = document.getText().toString();
+        namesText = names.getText().toString();
+        lastNamesText = lastNames.getText().toString();
+        genderText = gender;
+        countryText = spinnerCountry.getSelectedItem().toString();
+        addressText = address.getText().toString();
+        phoneText = phone.getText().toString();
+        emailText = email.getText().toString();
+        passwordText = password.getText().toString();
+
+        final Button button = localView.findViewById(R.id.btn_register);
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Log.d("emv", documentText);
+                // SignUp();
+            }
+        });
+
+
+
         // Inflate the layout for this fragment
         return localView;
     }
@@ -116,6 +150,21 @@ public class SignUp extends Fragment {
     }
 
     private void SignUp () {
+        Call<LenderResponse> call = ApiAdapter.getApiService().signUpLender(new Lender(emailText, passwordText, documentText, namesText, lastNamesText, genderText, countryText, addressText, phoneText));
+        call.enqueue(new Callback<LenderResponse>() {
+            @Override
+            public void onResponse(Call<LenderResponse> call, Response<LenderResponse> response) {
+                if (response.isSuccessful()) {
+                    Log.d("respuesta", response.message());
+                } else {
+                    Toast.makeText(getContext(), "not found", Toast.LENGTH_SHORT).show();
+                }
+            }
 
+            @Override
+            public void onFailure(Call<LenderResponse> call, Throwable t) {
+                Toast.makeText(getContext(), "network failure :( inform the user and possibly retry", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
