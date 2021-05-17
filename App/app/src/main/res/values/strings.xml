@@ -4,7 +4,7 @@
     <string name="e_mail">Email</string>
     <string name="password">Contraseña</string>
     <string name="login">Inicias sesión</string>
-    <string name="swipe_left_for_register">Registrar ahora</string>
+    <string name="swipe_left_for_register">Deslizar para Registrar ahora</string>
     <string name="register">Registrar</string>
     <string name="document">Documento</string>
     <string name="name">Nombres</string>
@@ -17,7 +17,7 @@
     <string name="homePhone">Teléfono Fijo</string>
     <string name="phone">Celular</string>
     <string name="re_type_password">Confirmar contraseña</string>
-    <string name="swipe_right_for_login">Ir a Iniciar sesión</string>
+    <string name="swipe_right_for_login">Deslizar para Iniciar sesión</string>
     <string-array name="countryList">
         <item>Colombia</item>
     </string-array>
