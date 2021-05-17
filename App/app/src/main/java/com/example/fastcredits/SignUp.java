@@ -1,7 +1,9 @@
 package com.example.fastcredits;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -18,17 +20,13 @@ import com.example.fastcredits.models.Countries;
 import com.example.fastcredits.models.Lender;
 import com.example.fastcredits.models.LenderResponse;
 import com.example.fastcredits.services.ApiAdapter;
-
 import java.util.ArrayList;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class SignUp extends Fragment {
-    List<String> formatCountries;
-
     String gender;
     Spinner spinnerCountry;
 
@@ -41,7 +39,7 @@ public class SignUp extends Fragment {
                              Bundle savedInstanceState) {
         View localView = inflater.inflate(R.layout.activity_sign_up, container, false);
 
-        // get id
+        // get form ids
         EditText document = (EditText) localView.findViewById(R.id.et_document);
         EditText names = (EditText) localView.findViewById(R.id.et_name);
         EditText lastNames = (EditText) localView.findViewById(R.id.et_lastName);
@@ -51,7 +49,6 @@ public class SignUp extends Fragment {
         EditText email = (EditText) localView.findViewById(R.id.et_email);
         EditText password = (EditText) localView.findViewById(R.id.et_password);
         EditText confirmPassword = (EditText) localView.findViewById(R.id.et_repassword);
-        // Spinner spinnerCountry = (Spinner) localView.findViewById(R.id.countryList);
         Spinner spinnerProfile = (Spinner) localView.findViewById(R.id.profileType);
 
         // need to be fixed
@@ -71,6 +68,7 @@ public class SignUp extends Fragment {
             }
         });
 
+        // Country spinner
         GetCountryList();
 
         // Profile spinner
@@ -95,13 +93,29 @@ public class SignUp extends Fragment {
 
             Lender l = new Lender(emailText, passwordText, documentText, namesText, lastNamesText, gender, countryText, addressText, phoneText);
             Toast.makeText(getContext(), countryText, Toast.LENGTH_SHORT).show();
+            // dialog message
+            new AlertDialog.Builder(getContext())
+                    .setTitle("Nuke planet Jupiter?")
+                    .setMessage("Note that nuking planet Jupiter will destroy everything in there.")
+                    .setPositiveButton("Nuke", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Log.d("MainActivity", "Sending atomic bombs to Jupiter");
+                        }
+                    })
+                    .setNegativeButton("Abort", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Log.d("MainActivity", "Aborting mission...");
+                        }
+                    })
+                    .show();
             // SignUp();
         });
 
         // Inflate the layout for this fragment
         return localView;
     }
-
 
 
     private void GetCountryList() {
@@ -149,4 +163,6 @@ public class SignUp extends Fragment {
             }
         });
     }
+
+
 }
