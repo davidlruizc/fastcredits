@@ -13,6 +13,7 @@ public class Lender {
     private String cellphone;
 
     public Lender(String email, String password, String document, String names, String lastname, String gender, String country, String address, String cellphone) {
+        super();
         this.email = email;
         this.password = password;
         this.document = document;

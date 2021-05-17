@@ -29,28 +29,7 @@ import retrofit2.Response;
 public class SignUp extends Fragment {
     List<String> formatCountries;
 
-    EditText document;
-    EditText names;
-    EditText lastNames;
-    EditText address;
-    EditText phoneHome;
-    EditText phone;
-    EditText email;
-    EditText password;
-    EditText confirmPassword;
     String gender;
-
-    String documentText;
-    String namesText;
-    String lastNamesText;
-    String addressText;
-    String phoneHomeText;
-    String phoneText;
-    String emailText;
-    String passwordText;
-    String confirmPasswordText;
-    String genderText;
-    String countryText;
 
     public SignUp() {
         // Required empty public constructor
@@ -61,18 +40,21 @@ public class SignUp extends Fragment {
                              Bundle savedInstanceState) {
         View localView = inflater.inflate(R.layout.activity_sign_up, container, false);
 
+        // get id
+        EditText document = (EditText) localView.findViewById(R.id.et_document);
+        EditText names = (EditText) localView.findViewById(R.id.et_name);
+        EditText lastNames = (EditText) localView.findViewById(R.id.et_lastName);
+        EditText address = (EditText) localView.findViewById(R.id.et_address);
+        EditText phoneHome = (EditText) localView.findViewById(R.id.et_homePhone);
+        EditText phone = (EditText) localView.findViewById(R.id.et_phone);
+        EditText email = (EditText) localView.findViewById(R.id.et_email);
+        EditText password = (EditText) localView.findViewById(R.id.et_password);
+        EditText confirmPassword = (EditText) localView.findViewById(R.id.et_repassword);
+
+        // need to be fixed
         RadioGroup radioGroup = (RadioGroup) localView.findViewById(R.id.radioGroup);
         Spinner spinnerCountry = (Spinner) localView.findViewById(R.id.countryList);
         Spinner spinnerProfile = (Spinner) localView.findViewById(R.id.profileType);
-        document = (EditText) localView.findViewById(R.id.et_document);
-        names = (EditText) localView.findViewById(R.id.et_name);
-        lastNames = (EditText) localView.findViewById(R.id.et_lastName);
-        address = (EditText) localView.findViewById(R.id.et_address);
-        phoneHome = (EditText) localView.findViewById(R.id.et_homePhone);
-        phone = (EditText) localView.findViewById(R.id.et_phone);
-        email = (EditText) localView.findViewById(R.id.et_email);
-        password = (EditText) localView.findViewById(R.id.et_password);
-        confirmPassword = (EditText) localView.findViewById(R.id.et_repassword);
 
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
         {
@@ -101,25 +83,24 @@ public class SignUp extends Fragment {
         adapterProfile.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerProfile.setAdapter(adapterProfile);
 
-        documentText = document.getText().toString();
-        namesText = names.getText().toString();
-        lastNamesText = lastNames.getText().toString();
-        genderText = gender;
-        countryText = spinnerCountry.getSelectedItem().toString();
-        addressText = address.getText().toString();
-        phoneText = phone.getText().toString();
-        emailText = email.getText().toString();
-        passwordText = password.getText().toString();
-
         final Button button = localView.findViewById(R.id.btn_register);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Log.d("emv", documentText);
+                String documentText = document.getText().toString();
+                String namesText = names.getText().toString();
+                String lastNamesText = lastNames.getText().toString();
+                String genderText = gender;
+                String countryText = spinnerCountry.getSelectedItem().toString();
+                String addressText = address.getText().toString();
+                String phoneText = phone.getText().toString();
+                String emailText = email.getText().toString();
+                String passwordText = password.getText().toString();
+
+                Lender l = new Lender(emailText, passwordText, documentText, namesText, lastNamesText, gender, countryText, addressText, phoneText);
+                Toast.makeText(getContext(), gender, Toast.LENGTH_SHORT).show();
                 // SignUp();
             }
         });
-
-
 
         // Inflate the layout for this fragment
         return localView;
@@ -149,8 +130,8 @@ public class SignUp extends Fragment {
         });
     }
 
-    private void SignUp () {
-        Call<LenderResponse> call = ApiAdapter.getApiService().signUpLender(new Lender(emailText, passwordText, documentText, namesText, lastNamesText, genderText, countryText, addressText, phoneText));
+    private void SignUpSubmit (Lender lender) {
+        Call<LenderResponse> call = ApiAdapter.getApiService().signUpLender(lender);
         call.enqueue(new Callback<LenderResponse>() {
             @Override
             public void onResponse(Call<LenderResponse> call, Response<LenderResponse> response) {
