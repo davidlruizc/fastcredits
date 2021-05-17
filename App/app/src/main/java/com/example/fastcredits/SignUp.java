@@ -50,11 +50,11 @@ public class SignUp extends Fragment {
         EditText email = (EditText) localView.findViewById(R.id.et_email);
         EditText password = (EditText) localView.findViewById(R.id.et_password);
         EditText confirmPassword = (EditText) localView.findViewById(R.id.et_repassword);
+        Spinner spinnerCountry = (Spinner) localView.findViewById(R.id.countryList);
+        Spinner spinnerProfile = (Spinner) localView.findViewById(R.id.profileType);
 
         // need to be fixed
         RadioGroup radioGroup = (RadioGroup) localView.findViewById(R.id.radioGroup);
-        Spinner spinnerCountry = (Spinner) localView.findViewById(R.id.countryList);
-        Spinner spinnerProfile = (Spinner) localView.findViewById(R.id.profileType);
 
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
         {
@@ -72,34 +72,34 @@ public class SignUp extends Fragment {
 
         CountryResponse();
 
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(),
-                R.array.countryList, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerCountry.setAdapter(adapter);
-
-
+        // Profile spinner
         ArrayAdapter<CharSequence> adapterProfile = ArrayAdapter.createFromResource(getContext(),
                 R.array.profileType, android.R.layout.simple_spinner_item);
         adapterProfile.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerProfile.setAdapter(adapterProfile);
 
-        final Button button = localView.findViewById(R.id.btn_register);
-        button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                String documentText = document.getText().toString();
-                String namesText = names.getText().toString();
-                String lastNamesText = lastNames.getText().toString();
-                String genderText = gender;
-                String countryText = spinnerCountry.getSelectedItem().toString();
-                String addressText = address.getText().toString();
-                String phoneText = phone.getText().toString();
-                String emailText = email.getText().toString();
-                String passwordText = password.getText().toString();
+        // Country spinner
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(),
+                R.array.countryList, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerCountry.setAdapter(adapter);
 
-                Lender l = new Lender(emailText, passwordText, documentText, namesText, lastNamesText, gender, countryText, addressText, phoneText);
-                Toast.makeText(getContext(), gender, Toast.LENGTH_SHORT).show();
-                // SignUp();
-            }
+        final Button button = localView.findViewById(R.id.btn_register);
+        button.setOnClickListener(v -> {
+            String documentText = document.getText().toString();
+            String namesText = names.getText().toString();
+            String lastNamesText = lastNames.getText().toString();
+            String genderText = gender;
+            String countryText = spinnerCountry.getSelectedItem().toString();
+            String addressText = address.getText().toString();
+            String phoneText = phone.getText().toString();
+            String emailText = email.getText().toString();
+            String passwordText = password.getText().toString();
+            String profileTypeText = spinnerProfile.getSelectedItem().toString();
+
+            Lender l = new Lender(emailText, passwordText, documentText, namesText, lastNamesText, gender, countryText, addressText, phoneText);
+            Toast.makeText(getContext(), genderText, Toast.LENGTH_SHORT).show();
+            // SignUp();
         });
 
         // Inflate the layout for this fragment
