@@ -30,6 +30,7 @@ public class SignUp extends Fragment {
     List<String> formatCountries;
 
     String gender;
+    Spinner spinnerCountry;
 
     public SignUp() {
         // Required empty public constructor
@@ -50,7 +51,7 @@ public class SignUp extends Fragment {
         EditText email = (EditText) localView.findViewById(R.id.et_email);
         EditText password = (EditText) localView.findViewById(R.id.et_password);
         EditText confirmPassword = (EditText) localView.findViewById(R.id.et_repassword);
-        Spinner spinnerCountry = (Spinner) localView.findViewById(R.id.countryList);
+        // Spinner spinnerCountry = (Spinner) localView.findViewById(R.id.countryList);
         Spinner spinnerProfile = (Spinner) localView.findViewById(R.id.profileType);
 
         // need to be fixed
@@ -70,7 +71,7 @@ public class SignUp extends Fragment {
             }
         });
 
-        CountryResponse();
+        GetCountryList();
 
         // Profile spinner
         ArrayAdapter<CharSequence> adapterProfile = ArrayAdapter.createFromResource(getContext(),
@@ -78,11 +79,6 @@ public class SignUp extends Fragment {
         adapterProfile.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerProfile.setAdapter(adapterProfile);
 
-        // Country spinner
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(),
-                R.array.countryList, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerCountry.setAdapter(adapter);
 
         final Button button = localView.findViewById(R.id.btn_register);
         button.setOnClickListener(v -> {
@@ -98,7 +94,7 @@ public class SignUp extends Fragment {
             String profileTypeText = spinnerProfile.getSelectedItem().toString();
 
             Lender l = new Lender(emailText, passwordText, documentText, namesText, lastNamesText, gender, countryText, addressText, phoneText);
-            Toast.makeText(getContext(), genderText, Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), countryText, Toast.LENGTH_SHORT).show();
             // SignUp();
         });
 
@@ -106,18 +102,23 @@ public class SignUp extends Fragment {
         return localView;
     }
 
-    private void CountryResponse() {
+
+
+    private void GetCountryList() {
         Call<ArrayList<Countries>> call = ApiAdapter.getApiService().getCountries();
         call.enqueue(new Callback<ArrayList<Countries>>() {
             @Override
             public void onResponse(Call<ArrayList<Countries>> call, Response<ArrayList<Countries>> response) {
+                spinnerCountry = (Spinner) getActivity().findViewById(R.id.countryList);
                 if (response.isSuccessful()) {
                     ArrayList<Countries> countries = response.body();
 
-                    for (int i = 0; i < countries.size(); ++ i) {
-                        String country = countries.get(i).getName();
-                        Log.d("aaa", country);
-                    }
+                    ArrayAdapter<Countries> adapter =
+                            new ArrayAdapter<>(getContext(),  android.R.layout.simple_spinner_dropdown_item, countries);
+                    adapter.setDropDownViewResource( android.R.layout.simple_spinner_dropdown_item);
+
+                    spinnerCountry.setAdapter(adapter);
+
                 } else {
                     Toast.makeText(getContext(), "not found", Toast.LENGTH_SHORT).show();
                 }
