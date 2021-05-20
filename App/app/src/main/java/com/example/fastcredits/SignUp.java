@@ -175,6 +175,4 @@ public class SignUp extends Fragment {
             }
         });
     }
-
-
 }
