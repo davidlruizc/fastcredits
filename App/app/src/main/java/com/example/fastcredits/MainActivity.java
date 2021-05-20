@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
+        // TODO: auth flow, validates if the user is already login or not
         if (true) {
             ViewPager viewPager = findViewById(R.id.viewPager);
 
