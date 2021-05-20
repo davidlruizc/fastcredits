@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import java.util.ArrayList;
@@ -19,13 +20,21 @@ public class MainActivity extends AppCompatActivity {
         ((AppCompatActivity) this).getSupportActionBar().hide();
 
         setContentView(R.layout.activity_main);
+    }
 
-        ViewPager viewPager = findViewById(R.id.viewPager);
+    protected void onStart() {
+        super.onStart();
 
-        AuthenticationPagerAdapter pagerAdapter = new AuthenticationPagerAdapter(getSupportFragmentManager());
-        pagerAdapter.addFragment(new Login());
-        pagerAdapter.addFragment(new SignUp());
-        viewPager.setAdapter(pagerAdapter);
+        if (true) {
+            ViewPager viewPager = findViewById(R.id.viewPager);
+
+            AuthenticationPagerAdapter pagerAdapter = new AuthenticationPagerAdapter(getSupportFragmentManager());
+            pagerAdapter.addFragment(new Login());
+            pagerAdapter.addFragment(new SignUp());
+            viewPager.setAdapter(pagerAdapter);
+        } else {
+            startActivity(new Intent(MainActivity.this, DrawerHome.class));
+        }
     }
 
     class AuthenticationPagerAdapter extends FragmentPagerAdapter {
