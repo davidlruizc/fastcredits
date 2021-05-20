@@ -3,7 +3,6 @@ package com.example.fastcredits;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -21,7 +20,7 @@ import com.example.fastcredits.models.Lender;
 import com.example.fastcredits.models.LenderResponse;
 import com.example.fastcredits.services.ApiAdapter;
 
-import org.json.JSONException;
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -44,31 +43,27 @@ public class SignUp extends Fragment {
         View localView = inflater.inflate(R.layout.activity_sign_up, container, false);
 
         // get form ids
-        EditText document = (EditText) localView.findViewById(R.id.et_document);
-        EditText names = (EditText) localView.findViewById(R.id.et_name);
-        EditText lastNames = (EditText) localView.findViewById(R.id.et_lastName);
-        EditText address = (EditText) localView.findViewById(R.id.et_address);
-        EditText phoneHome = (EditText) localView.findViewById(R.id.et_homePhone);
-        EditText phone = (EditText) localView.findViewById(R.id.et_phone);
-        EditText email = (EditText) localView.findViewById(R.id.et_email);
-        EditText password = (EditText) localView.findViewById(R.id.et_password);
-        EditText confirmPassword = (EditText) localView.findViewById(R.id.et_repassword);
-        Spinner spinnerProfile = (Spinner) localView.findViewById(R.id.profileType);
+        EditText document = localView.findViewById(R.id.et_document);
+        EditText names = localView.findViewById(R.id.et_name);
+        EditText lastNames = localView.findViewById(R.id.et_lastName);
+        EditText address = localView.findViewById(R.id.et_address);
+        EditText phoneHome = localView.findViewById(R.id.et_homePhone);
+        EditText phone = localView.findViewById(R.id.et_phone);
+        EditText email = localView.findViewById(R.id.et_email);
+        EditText password = localView.findViewById(R.id.et_password);
+        EditText confirmPassword = localView.findViewById(R.id.et_repassword);
+        Spinner spinnerProfile = localView.findViewById(R.id.profileType);
 
-        // need to be fixed
-        RadioGroup radioGroup = (RadioGroup) localView.findViewById(R.id.radioGroup);
+        RadioGroup radioGroup = localView.findViewById(R.id.radioGroup);
 
-        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
-        {
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                switch(checkedId) {
-                    case R.id.et_male:
-                        gender = "Masculino";
-                        break;
-                    case R.id.et_female:
-                        gender = "Femenino";
-                        break;
-                }
+        radioGroup.setOnCheckedChangeListener((group, checkedId) -> {
+            switch(checkedId) {
+                case R.id.et_male:
+                    gender = "Masculino";
+                    break;
+                case R.id.et_female:
+                    gender = "Femenino";
+                    break;
             }
         });
 
@@ -101,8 +96,6 @@ public class SignUp extends Fragment {
                     if (profileTypeText.equals("Prestamista")) {
                         Lender lender = new Lender(emailText, passwordText, documentText, namesText, lastNamesText, gender, countryText, addressText, phoneText);
                         SignUpLenderSubmit(lender);
-
-                        // Toast.makeText(getContext(), "Ingreso exitoso", Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     Toast.makeText(getContext(), profileTypeText, Toast.LENGTH_SHORT).show();
@@ -110,12 +103,7 @@ public class SignUp extends Fragment {
                     new AlertDialog.Builder(getContext())
                             .setTitle("¡Error!")
                             .setMessage("Lo sentimos, las contraseñas no coinciden, intenta nuevamente.")
-                            .setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    Log.d("MainActivity", "Sending atomic bombs to Jupiter");
-                                }
-                            })
+                            .setPositiveButton("Aceptar", (dialog, which) -> Log.d("MainActivity", "Sending atomic bombs to Jupiter"))
                             .show();
                 }
             } else {
@@ -123,12 +111,7 @@ public class SignUp extends Fragment {
                 new AlertDialog.Builder(getContext())
                         .setTitle("¡Error!")
                         .setMessage("No puedes continuar hasta que completes todos los campos")
-                        .setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                Log.d("MainActivity", "Sending atomic bombs to Jupiter");
-                            }
-                        })
+                        .setPositiveButton("Aceptar", (dialog, which) -> Log.d("MainActivity", "Sending atomic bombs to Jupiter"))
                         .show();
             }
         });
@@ -142,8 +125,8 @@ public class SignUp extends Fragment {
         Call<ArrayList<Countries>> call = ApiAdapter.getApiService().getCountries();
         call.enqueue(new Callback<ArrayList<Countries>>() {
             @Override
-            public void onResponse(Call<ArrayList<Countries>> call, Response<ArrayList<Countries>> response) {
-                spinnerCountry = (Spinner) getActivity().findViewById(R.id.countryList);
+            public void onResponse(@NotNull Call<ArrayList<Countries>> call, @NotNull Response<ArrayList<Countries>> response) {
+                spinnerCountry = getActivity().findViewById(R.id.countryList);
                 if (response.isSuccessful()) {
                     ArrayList<Countries> countries = response.body();
 
@@ -159,7 +142,7 @@ public class SignUp extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<ArrayList<Countries>> call, Throwable t) {
+            public void onFailure(@NotNull Call<ArrayList<Countries>> call, @NotNull Throwable t) {
                 Toast.makeText(getContext(), "network failure :( inform the user and possibly retry", Toast.LENGTH_SHORT).show();
             }
         });
@@ -169,21 +152,16 @@ public class SignUp extends Fragment {
         Call<LenderResponse> call = ApiAdapter.getApiService().signUpLender(lender);
         call.enqueue(new Callback<LenderResponse>() {
             @Override
-            public void onResponse(Call<LenderResponse> call, Response<LenderResponse> response) {
+            public void onResponse(@NotNull Call<LenderResponse> call, @NotNull Response<LenderResponse> response) {
                 if (response.isSuccessful()) {
-                    Log.d("respuesta", response.message());
+                    Toast.makeText(getContext(), response.body().toString(), Toast.LENGTH_LONG).show();
                 } else {
                     try {
                         JSONObject jObjError = new JSONObject(response.errorBody().string());
                         new AlertDialog.Builder(getContext())
                                 .setTitle("¡Error!")
                                 .setMessage(jObjError.getString("message"))
-                                .setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        Log.d("MainActivity", "Sending atomic bombs to Jupiter");
-                                    }
-                                })
+                                .setPositiveButton("Aceptar", (dialog, which) -> Log.d("MainActivity", "Sending atomic bombs to Jupiter"))
                                 .show();
                     } catch (Exception e) {
                         Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_LONG).show();
@@ -192,7 +170,7 @@ public class SignUp extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<LenderResponse> call, Throwable t) {
+            public void onFailure(@NotNull Call<LenderResponse> call, @NotNull Throwable t) {
                 Toast.makeText(getContext(), "Ha ocurrido un error por favor intentarlo nuevamente.", Toast.LENGTH_SHORT).show();
             }
         });
