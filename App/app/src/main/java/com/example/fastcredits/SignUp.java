@@ -20,6 +20,10 @@ import com.example.fastcredits.models.Countries;
 import com.example.fastcredits.models.Lender;
 import com.example.fastcredits.models.LenderResponse;
 import com.example.fastcredits.services.ApiAdapter;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
 import retrofit2.Call;
@@ -83,34 +87,50 @@ public class SignUp extends Fragment {
             String documentText = document.getText().toString();
             String namesText = names.getText().toString();
             String lastNamesText = lastNames.getText().toString();
-            String genderText = gender;
             String countryText = spinnerCountry.getSelectedItem().toString();
             String addressText = address.getText().toString();
             String phoneText = phone.getText().toString();
             String emailText = email.getText().toString();
             String passwordText = password.getText().toString();
+            String confirmPasswordText = confirmPassword.getText().toString();
             String profileTypeText = spinnerProfile.getSelectedItem().toString();
 
-            Lender l = new Lender(emailText, passwordText, documentText, namesText, lastNamesText, gender, countryText, addressText, phoneText);
-            Toast.makeText(getContext(), countryText, Toast.LENGTH_SHORT).show();
-            // dialog message
-            new AlertDialog.Builder(getContext())
-                    .setTitle("Nuke planet Jupiter?")
-                    .setMessage("Note that nuking planet Jupiter will destroy everything in there.")
-                    .setPositiveButton("Nuke", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            Log.d("MainActivity", "Sending atomic bombs to Jupiter");
-                        }
-                    })
-                    .setNegativeButton("Abort", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            Log.d("MainActivity", "Aborting mission...");
-                        }
-                    })
-                    .show();
-            // SignUp();
+
+            if (documentText != null && namesText != null && lastNamesText != null && addressText != null && phoneText != null && emailText != null && passwordText != null && gender != null && confirmPasswordText != null) {
+                if (passwordText.equals(confirmPasswordText)) {
+                    if (profileTypeText.equals("Prestamista")) {
+                        Lender lender = new Lender(emailText, passwordText, documentText, namesText, lastNamesText, gender, countryText, addressText, phoneText);
+                        SignUpLenderSubmit(lender);
+
+                        // Toast.makeText(getContext(), "Ingreso exitoso", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(getContext(), profileTypeText, Toast.LENGTH_SHORT).show();
+                    // dialog message
+                    new AlertDialog.Builder(getContext())
+                            .setTitle("¡Error!")
+                            .setMessage("Lo sentimos, las contraseñas no coinciden, intenta nuevamente.")
+                            .setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    Log.d("MainActivity", "Sending atomic bombs to Jupiter");
+                                }
+                            })
+                            .show();
+                }
+            } else {
+                // dialog message
+                new AlertDialog.Builder(getContext())
+                        .setTitle("¡Error!")
+                        .setMessage("No puedes continuar hasta que completes todos los campos")
+                        .setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Log.d("MainActivity", "Sending atomic bombs to Jupiter");
+                            }
+                        })
+                        .show();
+            }
         });
 
         // Inflate the layout for this fragment
@@ -145,7 +165,7 @@ public class SignUp extends Fragment {
         });
     }
 
-    private void SignUpSubmit (Lender lender) {
+    private void SignUpLenderSubmit (Lender lender) {
         Call<LenderResponse> call = ApiAdapter.getApiService().signUpLender(lender);
         call.enqueue(new Callback<LenderResponse>() {
             @Override
@@ -153,13 +173,27 @@ public class SignUp extends Fragment {
                 if (response.isSuccessful()) {
                     Log.d("respuesta", response.message());
                 } else {
-                    Toast.makeText(getContext(), "not found", Toast.LENGTH_SHORT).show();
+                    try {
+                        JSONObject jObjError = new JSONObject(response.errorBody().string());
+                        new AlertDialog.Builder(getContext())
+                                .setTitle("¡Error!")
+                                .setMessage(jObjError.getString("message"))
+                                .setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        Log.d("MainActivity", "Sending atomic bombs to Jupiter");
+                                    }
+                                })
+                                .show();
+                    } catch (Exception e) {
+                        Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+                    }
                 }
             }
 
             @Override
             public void onFailure(Call<LenderResponse> call, Throwable t) {
-                Toast.makeText(getContext(), "network failure :( inform the user and possibly retry", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Ha ocurrido un error por favor intentarlo nuevamente.", Toast.LENGTH_SHORT).show();
             }
         });
     }
