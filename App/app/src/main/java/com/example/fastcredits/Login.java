@@ -1,9 +1,11 @@
 package com.example.fastcredits;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +16,16 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.fastcredits.models.ApiResponse;
+import com.example.fastcredits.models.SignIn;
+import com.example.fastcredits.services.ApiAdapter;
 import com.example.fastcredits.utils.PreferenceStore;
+
+import org.json.JSONObject;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class Login extends Fragment {
     private PreferenceStore store = new PreferenceStore();
@@ -46,7 +57,14 @@ public class Login extends Fragment {
             String passwordText = password.getText().toString();
 
             if (emailText != null && passwordText != null) {
-
+                // TODO: sign in
+            } else {
+                // dialog message
+                new AlertDialog.Builder(getContext())
+                        .setTitle("¡Error!")
+                        .setMessage("Tiene campos incompletos")
+                        .setPositiveButton("Aceptar", (dialog, which) -> Log.d("MainActivity", "Sending atomic bombs to Jupiter"))
+                        .show();
             }
         });
 
@@ -54,7 +72,40 @@ public class Login extends Fragment {
         return localView;
     }
 
-    private void SignInInSubmit() {
+    private void SignInInSubmit(SignIn signIn, Boolean rememberUser) {
+        Call<ApiResponse> call = ApiAdapter.getApiService().singInUser(signIn);
+        call.enqueue(new Callback<ApiResponse>() {
+            @Override
+            public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
+                if (response.isSuccessful()) {
+                    store.setEmailPassword(signIn.getEmail(), signIn.getPassword(), getContext());
+                    store.setPersistSession(true, getContext());
 
+                    if (rememberUser) {
+                        store.setPersistCredentials(signIn.getEmail(), signIn.getPassword(), getContext());
+                    }
+
+                    Toast.makeText(getContext(),"Bienvenido a FastCredits", Toast.LENGTH_LONG).show();
+
+                    // TODO: navigate to Drawer view
+                } else {
+                    try {
+                        JSONObject jObjError = new JSONObject(response.errorBody().string());
+                        new AlertDialog.Builder(getContext())
+                                .setTitle("¡Error!")
+                                .setMessage(jObjError.getString("message"))
+                                .setPositiveButton("Aceptar", (dialog, which) -> Log.d("MainActivity", "Sending atomic bombs to Jupiter"))
+                                .show();
+                    } catch (Exception e) {
+                        Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ApiResponse> call, Throwable t) {
+                Toast.makeText(getContext(), "Ha ocurrido un error por favor intentarlo nuevamente.", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
