@@ -3,7 +3,7 @@ package com.example.fastcredits.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class LenderResponse {
+public class ApiResponse {
     @SerializedName("statusCode")
     @Expose
     private int statusCode;
@@ -17,3 +17,4 @@ public class LenderResponse {
         return message;
     }
 }
+

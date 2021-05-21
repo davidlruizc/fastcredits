@@ -15,9 +15,9 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.fastcredits.models.ApiResponse;
 import com.example.fastcredits.models.Countries;
 import com.example.fastcredits.models.Lender;
-import com.example.fastcredits.models.LenderResponse;
 import com.example.fastcredits.services.ApiAdapter;
 
 import org.jetbrains.annotations.NotNull;
@@ -149,10 +149,10 @@ public class SignUp extends Fragment {
     }
 
     private void SignUpLenderSubmit (Lender lender) {
-        Call<LenderResponse> call = ApiAdapter.getApiService().signUpLender(lender);
-        call.enqueue(new Callback<LenderResponse>() {
+        Call<ApiResponse> call = ApiAdapter.getApiService().signUpLender(lender);
+        call.enqueue(new Callback<ApiResponse>() {
             @Override
-            public void onResponse(@NotNull Call<LenderResponse> call, @NotNull Response<LenderResponse> response) {
+            public void onResponse(@NotNull Call<ApiResponse> call, @NotNull Response<ApiResponse> response) {
                 if (response.isSuccessful()) {
                     Toast.makeText(getContext(), response.body().toString(), Toast.LENGTH_LONG).show();
                 } else {
@@ -170,7 +170,7 @@ public class SignUp extends Fragment {
             }
 
             @Override
-            public void onFailure(@NotNull Call<LenderResponse> call, @NotNull Throwable t) {
+            public void onFailure(@NotNull Call<ApiResponse> call, @NotNull Throwable t) {
                 Toast.makeText(getContext(), "Ha ocurrido un error por favor intentarlo nuevamente.", Toast.LENGTH_SHORT).show();
             }
         });

@@ -21,10 +21,10 @@ public class PreferenceStore {
         return true;
     }
 
-    public static boolean setPersistSession(Boolean persisSession, Context context) {
+    public static boolean setPersistSession(Boolean persistSession, Context context) {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor = preferences.edit();
-        editor.putBoolean(PERSIST_SESSION, persisSession);
+        editor.putBoolean(PERSIST_SESSION, persistSession);
         editor.apply();
         return true;
     }
