@@ -55,9 +55,11 @@ public class Login extends Fragment {
         button.setOnClickListener(v -> {
             String emailText = email.getText().toString();
             String passwordText = password.getText().toString();
+            String profileTypeText = spinnerProfile.getSelectedItem().toString();
 
             if (emailText != null && passwordText != null) {
-                // TODO: sign in
+                SignIn signIn = new SignIn(emailText, passwordText, (profileTypeText == "Prestamista" ? 0 : 1));
+                SignInInSubmit(signIn, rememberUser.isChecked());
             } else {
                 // dialog message
                 new AlertDialog.Builder(getContext())
