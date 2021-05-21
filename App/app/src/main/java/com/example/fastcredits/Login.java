@@ -1,9 +1,9 @@
 package com.example.fastcredits;
 
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -89,7 +89,7 @@ public class Login extends Fragment {
 
                     Toast.makeText(getContext(),"Bienvenido a FastCredits", Toast.LENGTH_LONG).show();
 
-                    // TODO: navigate to Drawer view
+                    startActivity(new Intent(getActivity(), DrawerHome.class));
                 } else {
                     try {
                         JSONObject jObjError = new JSONObject(response.errorBody().string());

@@ -8,10 +8,14 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
+
+import com.example.fastcredits.utils.PreferenceStore;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+    private PreferenceStore store = new PreferenceStore();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
 
         // TODO: auth flow, validates if the user is already login or not
-        if (true) {
+        if (!store.getPersistSession(getApplicationContext())) {
             ViewPager viewPager = findViewById(R.id.viewPager);
 
             AuthenticationPagerAdapter pagerAdapter = new AuthenticationPagerAdapter(getSupportFragmentManager());
@@ -35,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
             viewPager.setAdapter(pagerAdapter);
         } else {
             startActivity(new Intent(MainActivity.this, DrawerHome.class));
+            Toast.makeText(getApplicationContext(), "Bienvenido de vuelta", Toast.LENGTH_LONG).show();
         }
     }
 
