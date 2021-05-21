@@ -24,12 +24,33 @@
         android:text="@string/tag"
         android:textSize="17sp"
         android:layout_marginStart="25dp"
-        android:layout_marginBottom="50dp"
-        android:layout_above="@id/et_email"
+        android:layout_marginBottom="30dp"
+        android:layout_above="@id/tv_profileType"
         android:layout_marginLeft="25dp" />
 
+    <TextView
+        android:id="@+id/tv_profileType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/profileTypeTitle"
+        android:textSize="17sp"
+        android:layout_marginStart="25dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="25dp"
+        android:layout_above="@id/et_profile_type"/>
+
+    <Spinner
+        android:id="@+id/et_profile_type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="10dp"
+        android:layout_above="@id/et_login_email"
+        />
+
     <EditText
-        android:id="@+id/et_email"
+        android:id="@+id/et_login_email"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:hint="@string/e_mail"
@@ -37,11 +58,11 @@
         android:layout_marginRight="20dp"
         android:padding="15dp"
         android:inputType="textEmailAddress"
-        android:layout_above="@id/et_password"
+        android:layout_above="@id/et_login_password"
         android:textSize="15sp" />
 
     <EditText
-        android:id="@+id/et_password"
+        android:id="@+id/et_login_password"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:hint="@string/password"
@@ -51,17 +72,32 @@
         android:padding="15dp"
         android:inputType="textPassword"
         android:layout_centerInParent="true"
-        android:textSize="15sp" />
+        android:textSize="15sp"
+        android:layout_above="@id/checkBox"/>
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:padding="15dp"
+        android:textSize="15sp"
+        android:text="@string/rememberUser"
+        />
 
     <Button
         android:id="@+id/btn_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/et_password"
+        android:layout_below="@id/et_login_password"
         android:background="@drawable/btn_custom"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="65dp"
         android:textColor="@android:color/white"
         android:text="@string/login"/>
 
