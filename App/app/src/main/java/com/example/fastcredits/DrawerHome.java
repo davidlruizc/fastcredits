@@ -1,9 +1,13 @@
 package com.example.fastcredits;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
+import android.widget.Toast;
 
+import com.example.fastcredits.utils.PreferenceStore;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
@@ -19,6 +23,7 @@ import androidx.appcompat.widget.Toolbar;
 public class DrawerHome extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
+    private PreferenceStore store = new PreferenceStore();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +31,7 @@ public class DrawerHome extends AppCompatActivity {
         setContentView(R.layout.activity_drawer_home);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,7 +56,27 @@ public class DrawerHome extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
+        Toolbar tb = findViewById(R.id.toolbar);
         getMenuInflater().inflate(R.menu.drawer_home, menu);
+        tb.setOnMenuItemClickListener(
+                new Toolbar.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        // CLEAR STORE
+                        Boolean persistCredentials = store.getPersistCredentials(getApplicationContext());
+                        store.setPersistSession(false, getApplicationContext());
+
+                        if (!persistCredentials) {
+                            store.clearSession(getApplicationContext());
+                            store.setPersistCredentials(false, getApplicationContext());
+                        }
+
+                        startActivity(new Intent(getApplication(), MainActivity.class));
+
+                        return onOptionsItemSelected(item);
+                    }
+                });
+
         return true;
     }
 

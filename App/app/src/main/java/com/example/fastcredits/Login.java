@@ -82,10 +82,7 @@ public class Login extends Fragment {
                 if (response.isSuccessful()) {
                     store.setEmailPassword(signIn.getEmail(), signIn.getPassword(), getContext());
                     store.setPersistSession(true, getContext());
-
-                    if (rememberUser) {
-                        store.setPersistCredentials(signIn.getEmail(), signIn.getPassword(), getContext());
-                    }
+                    store.setPersistCredentials(rememberUser, getContext());
 
                     Toast.makeText(getContext(),"Bienvenido a FastCredits", Toast.LENGTH_LONG).show();
 
