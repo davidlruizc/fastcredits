@@ -34,8 +34,12 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_logout">Cerrar sesión</string>
 
-    <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_profile">Perfil</string>
+    <string name="menu_routes">Rutas</string>
+    <string name="menu_routers">Ruteros</string>
+    <string name="menu_clients">Clientes</string>
+    <string name="menu_loan">Prestamos</string>
+    <string name="menu_reports">Informes</string>
+
     <string name="rememberUser">Recordar usuario</string>
 </resources>

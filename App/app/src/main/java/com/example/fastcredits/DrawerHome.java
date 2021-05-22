@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.fastcredits.utils.PreferenceStore;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -23,11 +25,15 @@ public class DrawerHome extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private PreferenceStore store = new PreferenceStore();
+    private TextView userEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drawer_home);
+
+        String email = store.getPersistUser(getApplicationContext());
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -39,8 +45,18 @@ public class DrawerHome extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        // Get context for drawer ui
         NavigationView navigationView = findViewById(R.id.nav_view);
+        View headerView = navigationView.getHeaderView(0);
+
+        userEmail = headerView.findViewById(R.id.drw_user_email);
+
+        if (email != null) {
+            userEmail.setText(email);
+        }
+
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(

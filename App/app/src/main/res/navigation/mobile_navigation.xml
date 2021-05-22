@@ -8,18 +8,36 @@
     <fragment
         android:id="@+id/nav_home"
         android:name="com.example.fastcredits.ui.home.HomeFragment"
-        android:label="@string/menu_home"
+        android:label="@string/menu_profile"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/nav_gallery"
         android:name="com.example.fastcredits.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
+        android:label="@string/menu_routes"
         tools:layout="@layout/fragment_gallery" />
 
     <fragment
         android:id="@+id/nav_slideshow"
         android:name="com.example.fastcredits.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
+        android:label="@string/menu_routers"
+        tools:layout="@layout/fragment_slideshow" />
+
+    <fragment
+        android:id="@+id/nav_clients"
+        android:name="com.example.fastcredits.ui.slideshow.SlideshowFragment"
+        android:label="@string/menu_clients"
+        tools:layout="@layout/fragment_slideshow" />
+
+    <fragment
+        android:id="@+id/nav_loan"
+        android:name="com.example.fastcredits.ui.slideshow.SlideshowFragment"
+        android:label="@string/menu_loan"
+        tools:layout="@layout/fragment_slideshow" />
+
+    <fragment
+        android:id="@+id/nav_reports"
+        android:name="com.example.fastcredits.ui.slideshow.SlideshowFragment"
+        android:label="@string/menu_reports"
         tools:layout="@layout/fragment_slideshow" />
 </navigation>
