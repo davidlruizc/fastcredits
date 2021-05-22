@@ -5,17 +5,18 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
 public class PreferenceStore {
-    // email, password, store session, remember user
     public static final String EMAIL = "EMAIL";
     public static final String PASSWORD = "PASSWORD";
+    public static final String ROLE = "ROLE";
     public static final String PERSIST_SESSION = "PERSIST_SESSION";
     public static final String PERSIST_CREDENTIALS = "PERSIST_CREDENTIALS";
 
-    public static boolean setEmailPassword(String email, String password, Context context) {
+    public static boolean setEmailPassword(String email, String password, int role, Context context) {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putString(EMAIL, email);
         editor.putString(PASSWORD, password);
+        editor.putInt(ROLE,  role);
         editor.apply();
         return true;
     }

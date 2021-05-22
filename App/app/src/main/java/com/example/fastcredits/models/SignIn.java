@@ -13,6 +13,8 @@ public class SignIn {
         return password;
     }
 
+    public int getRole() { return role; }
+
     public SignIn(String email, String password, int role) {
         super();
 
