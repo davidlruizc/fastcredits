@@ -1,5 +1,6 @@
 package com.example.fastcredits.services;
 
+import com.example.fastcredits.models.Admin;
 import com.example.fastcredits.models.ApiResponse;
 import com.example.fastcredits.models.Countries;
 import com.example.fastcredits.models.Clients;
@@ -27,4 +28,7 @@ public interface ApiService {
 
     @POST("rutero/signUp")
     Call<ApiResponse> signUpRouter(@Body Clients clients);
+
+    @POST("admins/signUp")
+    Call<ApiResponse> signUpAdmin(@Body Admin admin);
 }
