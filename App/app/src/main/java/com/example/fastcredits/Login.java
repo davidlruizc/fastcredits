@@ -105,7 +105,21 @@ public class Login extends Fragment {
 
                     Toast.makeText(getContext(),"Bienvenido a FastCredits", Toast.LENGTH_LONG).show();
 
-                    startActivity(new Intent(getActivity(), DrawerHome.class));
+                    switch (signIn.getRole()) {
+                        case 0:
+                            startActivity(new Intent(getActivity(), DrawerHome.class));
+                            break;
+                        case 1:
+                            startActivity(new Intent(getActivity(), DrawerHome.class));
+                            break;
+                        case 2:
+                            // TODO: Replace with other activities
+                            startActivity(new Intent(getActivity(), DrawerHome.class));
+                            break;
+                        case 3:
+                            startActivity(new Intent(getActivity(), AdminBottomNaivation.class));
+                            break;
+                    }
                 } else {
                     try {
                         JSONObject jObjError = new JSONObject(response.errorBody().string());

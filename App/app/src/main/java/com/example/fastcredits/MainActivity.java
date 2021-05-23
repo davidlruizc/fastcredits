@@ -36,7 +36,21 @@ public class MainActivity extends AppCompatActivity {
             pagerAdapter.addFragment(new SignUp());
             viewPager.setAdapter(pagerAdapter);
         } else {
-            startActivity(new Intent(MainActivity.this, DrawerHome.class));
+            switch (PreferenceStore.getRolePersisted(getApplicationContext())) {
+                // TODO: replace other activities acording the navigation state
+                case 0:
+                    startActivity(new Intent(MainActivity.this, DrawerHome.class));
+                    break;
+                case 1:
+                    startActivity(new Intent(MainActivity.this, DrawerHome.class));
+                    break;
+                case 2:
+                    startActivity(new Intent(MainActivity.this, DrawerHome.class));
+                    break;
+                case 3:
+                    startActivity(new Intent(MainActivity.this, AdminBottomNaivation.class));
+                    break;
+            }
             Toast.makeText(getApplicationContext(), "Bienvenido de vuelta", Toast.LENGTH_LONG).show();
         }
     }

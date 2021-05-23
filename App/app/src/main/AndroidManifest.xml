@@ -14,6 +14,9 @@
         android:theme="@style/Theme.FastCredits"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".AdminBottomNaivation"
+            android:label="@string/title_activity_admin_bottom_naivation"></activity>
+        <activity
             android:name=".DrawerHome"
             android:label="@string/title_activity_drawer_home"
             android:theme="@style/Theme.FastCredits.NoActionBar" />

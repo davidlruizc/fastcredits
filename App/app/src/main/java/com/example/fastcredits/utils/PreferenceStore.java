@@ -58,6 +58,11 @@ public class PreferenceStore {
         return preferences.getString(PASSWORD, null);
     }
 
+    public static int getRolePersisted(Context context) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        return preferences.getInt(ROLE, 5);
+    }
+
     public static void clearSession(Context context) {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor = preferences.edit();
