@@ -3,6 +3,7 @@ package com.example.fastcredits;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ArrayAdapter;
@@ -34,6 +35,8 @@ public class SignUpLenderActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up_lender);
+        // hide header
+        ((AppCompatActivity) this).getSupportActionBar().hide();
 
         // get form ids
         EditText document = findViewById(R.id.et_document);
@@ -106,6 +109,11 @@ public class SignUpLenderActivity extends AppCompatActivity {
                         .setPositiveButton("Aceptar", (dialog, which) -> Log.d("MainActivity", "Sending atomic bombs to Jupiter"))
                         .show();
             }
+        });
+
+        final Button buttonGoBack = findViewById(R.id.btn_goBack);
+        buttonGoBack.setOnClickListener(v -> {
+            startActivity(new Intent(getApplicationContext(), MainActivity.class));
         });
     }
 

@@ -219,24 +219,15 @@
                 android:layout_centerInParent="true"
                 android:textColor="@android:color/white"
                 android:text="@string/register"/>
-
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@drawable/ic_arrow_left"
-                android:layout_above="@id/swipeLeft"
-                android:layout_centerHorizontal="true"/>
-
-            <TextView
-                android:id="@+id/swipeLeft"
-                android:layout_width="wrap_content"
+            <Button
+                android:id="@+id/btn_goBack"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/swipe_right_for_login"
-                android:textSize="15sp"
-                android:layout_centerHorizontal="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginBottom="20dp"/>
+                android:textColor="#9a0a0a"
+                android:layout_weight="0.01"
+                android:layout_marginBottom="30dp"
+                android:background="@android:color/transparent"
+                android:text="@string/goback_login"  />
         </TableLayout>
     </ScrollView>
 </LinearLayout>

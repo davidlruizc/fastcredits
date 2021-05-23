@@ -9,6 +9,7 @@
     <!-- Sign Up screen -->
     <string name="select_profile_type">Seleccionar tipo de perfil</string>
     <string name="goto_button">Completar registro</string>
+    <string name="goback_login">Regresar</string>
 
     <!-- Lender SignUp Form -->
     <string name="register">Registrar</string>
