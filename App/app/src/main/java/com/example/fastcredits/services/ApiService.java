@@ -21,4 +21,7 @@ public interface ApiService {
 
     @POST("users/signIn")
     Call<ApiResponse> singInUser(@Body SignIn signIn);
+
+    @POST("users/signUp")
+    Call<ApiResponse> signUpClient(@Body Lender lender);
 }

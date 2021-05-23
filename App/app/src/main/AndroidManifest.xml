@@ -13,7 +13,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FastCredits"
         android:usesCleartextTraffic="true">
-        <activity android:name=".SignUpLenderActivity"></activity>
         <activity
             android:name=".DrawerHome"
             android:label="@string/title_activity_drawer_home"
