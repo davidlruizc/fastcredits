@@ -28,7 +28,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class Login extends Fragment {
-    private PreferenceStore store = new PreferenceStore();
 
     public Login() {
         // Required empty public constructor
@@ -56,9 +55,29 @@ public class Login extends Fragment {
             String emailText = email.getText().toString();
             String passwordText = password.getText().toString();
             String profileTypeText = spinnerProfile.getSelectedItem().toString();
+            int profileType;
+
+            switch (profileTypeText) {
+                case "Cliente":
+                    profileType = 0;
+                    break;
+                case "Prestamista":
+                    profileType = 1;
+                    break;
+                case "Rutero":
+                    profileType = 2;
+                    break;
+                case "Administrador":
+                    profileType = 3;
+                    break;
+                default:
+                    profileType = 0;
+                    break;
+            }
+
 
             if (emailText != null && passwordText != null) {
-                SignIn signIn = new SignIn(emailText, passwordText, (profileTypeText == "Prestamista" ? 0 : 1));
+                SignIn signIn = new SignIn(emailText, passwordText, profileType);
                 SignInInSubmit(signIn, rememberUser.isChecked());
             } else {
                 // dialog message
@@ -80,9 +99,9 @@ public class Login extends Fragment {
             @Override
             public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
                 if (response.isSuccessful()) {
-                    store.setEmailPassword(signIn.getEmail(), signIn.getPassword(), signIn.getRole(), getContext());
-                    store.setPersistSession(true, getContext());
-                    store.setPersistCredentials(rememberUser, getContext());
+                    PreferenceStore.setEmailPassword(signIn.getEmail(), signIn.getPassword(), signIn.getRole(), getContext());
+                    PreferenceStore.setPersistSession(true, getContext());
+                    PreferenceStore.setPersistCredentials(rememberUser, getContext());
 
                     Toast.makeText(getContext(),"Bienvenido a FastCredits", Toast.LENGTH_LONG).show();
 

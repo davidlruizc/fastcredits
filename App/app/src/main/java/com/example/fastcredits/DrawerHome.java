@@ -23,7 +23,6 @@ import androidx.appcompat.widget.Toolbar;
 public class DrawerHome extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
-    private PreferenceStore store = new PreferenceStore();
     private TextView userEmail;
 
     @Override
@@ -31,7 +30,7 @@ public class DrawerHome extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drawer_home);
 
-        String email = store.getPersistUser(getApplicationContext());
+        String email = PreferenceStore.getPersistUser(getApplicationContext());
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -77,12 +76,12 @@ public class DrawerHome extends AppCompatActivity {
                     @Override
                     public boolean onMenuItemClick(MenuItem item) {
                         // CLEAR STORE
-                        Boolean persistCredentials = store.getPersistCredentials(getApplicationContext());
-                        store.setPersistSession(false, getApplicationContext());
+                        Boolean persistCredentials = PreferenceStore.getPersistCredentials(getApplicationContext());
+                        PreferenceStore.setPersistSession(false, getApplicationContext());
 
                         if (!persistCredentials) {
-                            store.clearSession(getApplicationContext());
-                            store.setPersistCredentials(false, getApplicationContext());
+                            PreferenceStore.clearSession(getApplicationContext());
+                            PreferenceStore.setPersistCredentials(false, getApplicationContext());
                         }
 
                         startActivity(new Intent(getApplication(), MainActivity.class));

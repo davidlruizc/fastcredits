@@ -15,7 +15,6 @@ import com.example.fastcredits.utils.PreferenceStore;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    private PreferenceStore store = new PreferenceStore();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        if (!store.getPersistSession(getApplicationContext())) {
+        if (!PreferenceStore.getPersistSession(getApplicationContext())) {
             ViewPager viewPager = findViewById(R.id.viewPager);
 
             AuthenticationPagerAdapter pagerAdapter = new AuthenticationPagerAdapter(getSupportFragmentManager());
