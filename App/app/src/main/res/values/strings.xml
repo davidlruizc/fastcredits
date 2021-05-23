@@ -5,6 +5,11 @@
     <string name="password">Contraseña</string>
     <string name="login">Iniciar sesión</string>
     <string name="swipe_left_for_register">Deslizar para Registrar ahora</string>
+
+    <!-- Sign Up screen -->
+    <string name="select_profile_type">Seleccionar tipo de perfil</string>
+    <string name="goto_button">Completar registro</string>
+
     <!-- Lender SignUp Form -->
     <string name="register">Registrar</string>
     <string name="document">Documento</string>
@@ -27,6 +32,11 @@
         <item>Rutero</item>
         <item>Administrador</item>
     </string-array>
+    <!-- Profile types strings -->
+    <string name="profile_clients">Cliente</string>
+    <string name="profile_lender">Prestamista</string>
+    <string name="profile_router">Rutero</string>
+    <string name="profile_admin">Administrador</string>
 
     <string name="profileTypeTitle">Elegir tipo de perfil</string>
     <string name="title_activity_drawer_home">DrawerHome</string>

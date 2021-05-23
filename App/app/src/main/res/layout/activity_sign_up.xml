@@ -17,7 +17,6 @@
             android:layout_height="match_parent"
             android:stretchColumns="1">
 
-
                 <TextView
                     android:id="@+id/tv_logo"
                     android:layout_width="wrap_content"
@@ -30,66 +29,11 @@
                     android:layout_marginTop="60dp"
                     android:layout_marginLeft="25dp" />
 
-
                 <TextView
-                    android:id="@+id/tv_profileType"
+                    android:id="@+id/tv_select_profile_type"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/profileTypeTitle"
-                    android:textSize="17sp"
-                    android:layout_marginStart="25dp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginLeft="25dp" />
-
-                <Spinner
-                    android:id="@+id/profileType"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginBottom="10dp"/>
-
-                <EditText
-                    android:id="@+id/et_document"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:hint="@string/document"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginBottom="10dp"
-                    android:padding="15dp"
-                    android:inputType="number"
-                    android:textSize="15sp" />
-
-                <EditText
-                    android:id="@+id/et_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:hint="@string/name"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginBottom="10dp"
-                    android:padding="15dp"
-                    android:inputType="textPersonName"
-                    android:textSize="15sp" />
-
-                <EditText
-                    android:id="@+id/et_lastName"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:hint="@string/lastName"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginBottom="10dp"
-                    android:padding="15dp"
-                    android:inputType="textPersonName"
-                    android:textSize="15sp" />
-
-                <TextView
-                    android:id="@+id/tv_gender"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/gender"
+                    android:text="@string/select_profile_type"
                     android:textSize="17sp"
                     android:layout_marginStart="25dp"
                     android:layout_marginLeft="25dp" />
@@ -103,109 +47,23 @@
                     android:layout_marginBottom="10dp"
                     android:orientation="vertical">
 
-                    <RadioButton android:id="@+id/et_male"
+                    <RadioButton android:id="@+id/et_clients"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/male"/>
-                    <RadioButton android:id="@+id/et_female"
+                        android:text="@string/profile_clients"/>
+                    <RadioButton android:id="@+id/et_lender"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/female"/>
-
+                        android:text="@string/profile_lender"/>
+                    <RadioButton android:id="@+id/et_router"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/profile_router"/>
+                    <RadioButton android:id="@+id/et_admin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/profile_admin"/>
                 </RadioGroup>
-
-                <TextView
-                    android:id="@+id/tv_country"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/country"
-                    android:textSize="17sp"
-                    android:layout_marginStart="25dp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginLeft="25dp" />
-
-                <Spinner
-                    android:id="@+id/countryList"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginBottom="10dp"/>
-
-
-            <EditText
-                    android:id="@+id/et_address"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:hint="@string/address"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginBottom="10dp"
-                    android:padding="15dp"
-                    android:inputType="text"
-                    android:textSize="15sp" />
-
-
-                <EditText
-                    android:id="@+id/et_homePhone"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:hint="@string/homePhone"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginBottom="10dp"
-                    android:padding="15dp"
-                    android:inputType="number"
-                    android:textSize="15sp" />
-
-                <EditText
-                    android:id="@+id/et_phone"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:hint="@string/phone"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginBottom="10dp"
-                    android:padding="15dp"
-                    android:inputType="number"
-                    android:textSize="15sp" />
-
-                <EditText
-                    android:id="@+id/et_email"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:hint="@string/e_mail"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginBottom="10dp"
-                    android:padding="15dp"
-                    android:inputType="textEmailAddress"
-                    android:textSize="15sp" />
-
-                <EditText
-                    android:id="@+id/et_password"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:hint="@string/password"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginBottom="10dp"
-                    android:padding="15dp"
-                    android:inputType="textPassword"
-                    android:textSize="15sp" />
-
-                <EditText
-                    android:id="@+id/et_repassword"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:hint="@string/re_type_password"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:padding="15dp"
-                    android:inputType="textPassword"
-                    android:textSize="15sp" />
-
-
 
                 <Button
                     android:id="@+id/btn_register"
@@ -218,7 +76,7 @@
                     android:layout_marginTop="30dp"
                     android:layout_centerInParent="true"
                     android:textColor="@android:color/white"
-                    android:text="@string/register"/>
+                    android:text="@string/goto_button"/>
 
                 <ImageView
                     android:layout_width="30dp"
