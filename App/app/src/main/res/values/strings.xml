@@ -3,7 +3,7 @@
     <string name="tag">¡Ingresa ya!</string>
     <string name="e_mail">Email</string>
     <string name="password">Contraseña</string>
-    <string name="login">Inicias sesión</string>
+    <string name="login">Iniciar sesión</string>
     <string name="swipe_left_for_register">Deslizar para Registrar ahora</string>
     <string name="register">Registrar</string>
     <string name="document">Documento</string>
@@ -42,4 +42,6 @@
     <string name="menu_reports">Informes</string>
 
     <string name="rememberUser">Recordar usuario</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
