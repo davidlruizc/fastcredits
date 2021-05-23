@@ -17,7 +17,7 @@ import android.widget.Toast;
 
 import com.example.fastcredits.models.ApiResponse;
 import com.example.fastcredits.models.Countries;
-import com.example.fastcredits.models.Lender;
+import com.example.fastcredits.models.Clients;
 import com.example.fastcredits.services.ApiAdapter;
 
 import org.jetbrains.annotations.NotNull;
@@ -84,8 +84,8 @@ public class SignUp extends Fragment {
 
             if (documentText != null && namesText != null && lastNamesText != null && addressText != null && phoneText != null && emailText != null && passwordText != null && gender != null && confirmPasswordText != null) {
                 if (passwordText.equals(confirmPasswordText)) {
-                    Lender lender = new Lender(emailText, passwordText, documentText, namesText, lastNamesText, gender, countryText, addressText, phoneText);
-                    SignUpLenderSubmit(lender);
+                    Clients clients = new Clients(emailText, passwordText, documentText, namesText, lastNamesText, gender, countryText, addressText, phoneText);
+                    SignUpLenderSubmit(clients);
                 } else {
                     // dialog message
                     new AlertDialog.Builder(getContext())
@@ -135,8 +135,8 @@ public class SignUp extends Fragment {
         });
     }
 
-    private void SignUpLenderSubmit (Lender lender) {
-        Call<ApiResponse> call = ApiAdapter.getApiService().signUpClient(lender);
+    private void SignUpLenderSubmit (Clients clients) {
+        Call<ApiResponse> call = ApiAdapter.getApiService().signUpClient(clients);
         call.enqueue(new Callback<ApiResponse>() {
             @Override
             public void onResponse(@NotNull Call<ApiResponse> call, @NotNull Response<ApiResponse> response) {

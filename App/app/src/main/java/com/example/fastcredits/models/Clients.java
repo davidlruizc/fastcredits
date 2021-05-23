@@ -1,7 +1,7 @@
 package com.example.fastcredits.models;
 
 
-public class Lender {
+public class Clients {
     private String email;
     private String password;
     private String document;
@@ -12,7 +12,7 @@ public class Lender {
     private String address;
     private String cellphone;
 
-    public Lender(String email, String password, String document, String names, String lastname, String gender, String country, String address, String cellphone) {
+    public Clients(String email, String password, String document, String names, String lastname, String gender, String country, String address, String cellphone) {
         super();
         this.email = email;
         this.password = password;

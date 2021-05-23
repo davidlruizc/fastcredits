@@ -2,7 +2,7 @@ package com.example.fastcredits.services;
 
 import com.example.fastcredits.models.ApiResponse;
 import com.example.fastcredits.models.Countries;
-import com.example.fastcredits.models.Lender;
+import com.example.fastcredits.models.Clients;
 import com.example.fastcredits.models.SignIn;
 
 import java.util.ArrayList;
@@ -17,11 +17,14 @@ public interface ApiService {
     Call<ArrayList<Countries>> getCountries();
 
     @POST("prestamista/signUp")
-    Call<ApiResponse> signUpLender(@Body Lender lender);
+    Call<ApiResponse> signUpLender(@Body Clients clients);
 
     @POST("users/signIn")
     Call<ApiResponse> singInUser(@Body SignIn signIn);
 
     @POST("users/signUp")
-    Call<ApiResponse> signUpClient(@Body Lender lender);
+    Call<ApiResponse> signUpClient(@Body Clients clients);
+
+    @POST("rutero/signUp")
+    Call<ApiResponse> signUpRouter(@Body Clients clients);
 }
