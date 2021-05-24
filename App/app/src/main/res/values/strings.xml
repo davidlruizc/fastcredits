@@ -58,7 +58,7 @@
 
     <string name="rememberUser">Recordar usuario</string>
     <string name="title_activity_admin_bottom_naivation">MainActivity</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_home">Solicitudes</string>
+    <string name="title_dashboard">Administración</string>
+    <string name="title_notifications">Creación</string>
 </resources>
