@@ -9,7 +9,7 @@
         android:id="@+id/navigation_bottom_home"
         android:name="com.example.fastcredits.ui.adminHome.AdminHomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_admin_home" />
 
     <fragment
         android:id="@+id/navigation_bottom_dashboard"
