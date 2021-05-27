@@ -1,4 +1,4 @@
-package com.example.fastcredits.ui.adminHome;
+package com.example.fastcredits.ui.dashboard;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,32 +10,32 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.fastcredits.models.Lender;
 import com.example.fastcredits.R;
+import com.example.fastcredits.models.Lender;
 
 import java.util.ArrayList;
 
-public class CardLendersAdapter extends RecyclerView.Adapter<CardLendersAdapter.RecyclerViewHolder> {
+public class CardAdminAdapter extends RecyclerView.Adapter<CardAdminAdapter.RecyclerViewHolder> {
     // creating a variable for our array list and context.
     private ArrayList<Lender> lendersArrayList;
     private Context mcontext;
 
     // creating a constructor class.
-    public CardLendersAdapter(ArrayList<Lender> recyclerDataArrayList, Context mcontext) {
+    public CardAdminAdapter(ArrayList<Lender> recyclerDataArrayList, Context mcontext) {
         this.lendersArrayList = recyclerDataArrayList;
         this.mcontext = mcontext;
     }
 
     @NonNull
     @Override
-    public RecyclerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public CardAdminAdapter.RecyclerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         // Inflate Layout
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_layout, parent, false);
-        return new RecyclerViewHolder(view);
+        return new CardAdminAdapter.RecyclerViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull CardAdminAdapter.RecyclerViewHolder holder, int position) {
         // Set the data to textview from our modal class.
         Lender modal = lendersArrayList.get(position);
         holder.fullName.setText(modal.getFullName());

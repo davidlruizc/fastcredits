@@ -35,4 +35,7 @@ public interface ApiService {
 
     @GET("admins/pendingPrestamistas")
     Call<Lenders> getPendingLenders();
+
+    @GET("admins/allPrestamistas")
+    Call<Lenders> getAllLenders();
 }
