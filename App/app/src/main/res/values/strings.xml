@@ -27,6 +27,12 @@
     <string name="swipe_right_for_login">Deslizar para Iniciar sesión</string>
 
     <!-- Profile types -->
+    <string-array name="profileType_sign_up">
+        <item>Cliente</item>
+        <item>Prestamista</item>
+    </string-array>
+
+    <!-- Profile types -->
     <string-array name="profileType">
         <item>Cliente</item>
         <item>Prestamista</item>

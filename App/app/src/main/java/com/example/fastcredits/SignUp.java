@@ -52,6 +52,7 @@ public class SignUp extends Fragment {
         EditText email = localView.findViewById(R.id.et_email);
         EditText password = localView.findViewById(R.id.et_password);
         EditText confirmPassword = localView.findViewById(R.id.et_repassword);
+        Spinner spinnerProfile = localView.findViewById(R.id.profile_type_list);
 
         RadioGroup radioGroup = localView.findViewById(R.id.radioGroup);
 
@@ -65,6 +66,12 @@ public class SignUp extends Fragment {
                     break;
             }
         });
+
+        // Profile type spinner
+        ArrayAdapter<CharSequence> adapterProfile = ArrayAdapter.createFromResource(getContext(),
+                R.array.profileType_sign_up, android.R.layout.simple_spinner_item);
+        adapterProfile.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerProfile.setAdapter(adapterProfile);
 
         // Country spinner
         GetCountryList();
@@ -80,12 +87,20 @@ public class SignUp extends Fragment {
             String emailText = email.getText().toString();
             String passwordText = password.getText().toString();
             String confirmPasswordText = confirmPassword.getText().toString();
+            String profileTypeText = spinnerProfile.getSelectedItem().toString();
 
 
             if (documentText != null && namesText != null && lastNamesText != null && addressText != null && phoneText != null && emailText != null && passwordText != null && gender != null && confirmPasswordText != null) {
                 if (passwordText.equals(confirmPasswordText)) {
                     Clients clients = new Clients(emailText, passwordText, documentText, namesText, lastNamesText, gender, countryText, addressText, phoneText);
-                    SignUpLenderSubmit(clients);
+                    switch (profileTypeText) {
+                        case "Cliente":
+                            SignUpClientSubmit(clients);
+                            break;
+                        case "Prestamista":
+                            SignUpLenderSubmit(clients);
+                            break;
+                    }
                 } else {
                     // dialog message
                     new AlertDialog.Builder(getContext())
@@ -135,13 +150,49 @@ public class SignUp extends Fragment {
         });
     }
 
-    private void SignUpLenderSubmit (Clients clients) {
+    private void SignUpClientSubmit (Clients clients) {
         Call<ApiResponse> call = ApiAdapter.getApiService().signUpClient(clients);
         call.enqueue(new Callback<ApiResponse>() {
             @Override
             public void onResponse(@NotNull Call<ApiResponse> call, @NotNull Response<ApiResponse> response) {
                 if (response.isSuccessful()) {
-                    Toast.makeText(getContext(), response.body().toString(), Toast.LENGTH_LONG).show();
+                    new AlertDialog.Builder(getContext())
+                            .setTitle("¡Felicidades!")
+                            .setMessage(response.body().toString())
+                            .setPositiveButton("Aceptar", (dialog, which) -> Log.d("MainActivity", "Sending atomic bombs to Jupiter"))
+                            .show();
+                } else {
+                    try {
+                        JSONObject jObjError = new JSONObject(response.errorBody().string());
+                        new AlertDialog.Builder(getContext())
+                                .setTitle("¡Error!")
+                                .setMessage(jObjError.getString("message"))
+                                .setPositiveButton("Aceptar", (dialog, which) -> Log.d("MainActivity", "Sending atomic bombs to Jupiter"))
+                                .show();
+                    } catch (Exception e) {
+                        Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(@NotNull Call<ApiResponse> call, @NotNull Throwable t) {
+                Toast.makeText(getContext(), "Ha ocurrido un error por favor intentarlo nuevamente.", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void SignUpLenderSubmit (Clients clients) {
+        Call<ApiResponse> call = ApiAdapter.getApiService().signUpLender(clients);
+        call.enqueue(new Callback<ApiResponse>() {
+            @Override
+            public void onResponse(@NotNull Call<ApiResponse> call, @NotNull Response<ApiResponse> response) {
+                if (response.isSuccessful()) {
+                    new AlertDialog.Builder(getContext())
+                            .setTitle("¡Felicidades!")
+                            .setMessage(response.body().toString())
+                            .setPositiveButton("Aceptar", (dialog, which) -> Log.d("MainActivity", "Sending atomic bombs to Jupiter"))
+                            .show();
                 } else {
                     try {
                         JSONObject jObjError = new JSONObject(response.errorBody().string());

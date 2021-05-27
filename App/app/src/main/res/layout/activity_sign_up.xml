@@ -30,6 +30,23 @@
                 android:layout_marginTop="60dp"
                 android:layout_marginLeft="25dp" />
 
+            <TextView
+                android:id="@+id/signup_profile_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/profileTypeTitle"
+                android:textSize="17sp"
+                android:layout_marginStart="25dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="25dp" />
+
+            <Spinner
+                android:id="@+id/profile_type_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="10dp"/>
 
             <EditText
                 android:id="@+id/et_document"
