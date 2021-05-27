@@ -47,18 +47,18 @@ export class UsersService {
     const user = await this.userModel.findOne({
       email: validateUserDto.email,
     });
-    if (!user.state) {
-      throw new HttpException(
-        'El usuario se encuentra bloqueado.',
-        HttpStatus.UNAUTHORIZED,
-      );
-    }
     if (user) {
       const passMatch = await bcrypt.compare(
         validateUserDto.password,
         user.password,
       );
       if (passMatch) {
+        if (!user.state) {
+          throw new HttpException(
+            'El usuario se encuentra bloqueado.',
+            HttpStatus.UNAUTHORIZED,
+          );
+        }
         return user._id;
       } else {
         throw new HttpException(
@@ -78,18 +78,18 @@ export class UsersService {
     const user = await this.prestamistaModel.findOne({
       email: validateUserDto.email,
     });
-    if (!user.state) {
-      throw new HttpException(
-        'El prestamista se encuentra bloqueado.',
-        HttpStatus.UNAUTHORIZED,
-      );
-    }
     if (user) {
       const passMatch = await bcrypt.compare(
         validateUserDto.password,
         user.password,
       );
       if (passMatch) {
+        if (!user.state) {
+          throw new HttpException(
+            'El prestamista se encuentra bloqueado.',
+            HttpStatus.UNAUTHORIZED,
+          );
+        }
         if (user.active) {
           return user._id;
         } else {
@@ -141,18 +141,18 @@ export class UsersService {
     const user = await this.ruteroModel.findOne({
       email: validateUserDto.email,
     });
-    if (!user.state) {
-      throw new HttpException(
-        'El rutero se encuentra bloqueado.',
-        HttpStatus.UNAUTHORIZED,
-      );
-    }
     if (user) {
       const passMatch = await bcrypt.compare(
         validateUserDto.password,
         user.password,
       );
       if (passMatch) {
+        if (!user.state) {
+          throw new HttpException(
+            'El rutero se encuentra bloqueado.',
+            HttpStatus.UNAUTHORIZED,
+          );
+        }
         return user._id;
       } else {
         throw new HttpException(
