@@ -4,6 +4,7 @@ import com.example.fastcredits.models.Admin;
 import com.example.fastcredits.models.ApiResponse;
 import com.example.fastcredits.models.Countries;
 import com.example.fastcredits.models.Clients;
+import com.example.fastcredits.models.EnableLender;
 import com.example.fastcredits.models.Lenders;
 import com.example.fastcredits.models.SignIn;
 
@@ -38,4 +39,7 @@ public interface ApiService {
 
     @GET("admins/allPrestamistas")
     Call<Lenders> getAllLenders();
+
+    @POST("admins/enablePrestamista")
+    Call<ApiResponse> enableLender(@Body EnableLender enableLender);
 }
