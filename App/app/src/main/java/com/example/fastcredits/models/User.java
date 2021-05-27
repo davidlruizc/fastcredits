@@ -5,7 +5,11 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.Date;
 
-public class Users {
+public class User {
+    @SerializedName("id")
+    @Expose
+    private String id;
+
     @SerializedName("address")
     @Expose
     private String address;
@@ -50,6 +54,10 @@ public class Users {
     @Expose
     private String rol;
 
+    public String getId() {
+        return id;
+    }
+
     public String getFullName() {
         return names + " " + lastname;
     }
@@ -62,15 +70,13 @@ public class Users {
         return cellphone;
     }
 
-    public String getGender() { return gender; }
+    public String getRole() { return rol; }
 
-    public String getCountry() { return country; }
-
-    public String getAddress() { return address; }
+    public Boolean getState() { return state; }
 
     public Date getDate() { return date; }
 
-    public Users(String email, String document, String names, String lastname, String gender, String country, String address, String cellphone, Date date, Boolean state, String rol) {
+    public User(String email, String document, String names, String lastname, String gender, String country, String address, String cellphone, Date date, Boolean state, String rol) {
         this.email = email;
         this.document = document;
         this.names = names;

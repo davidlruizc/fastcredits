@@ -4,12 +4,24 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 
-public class EnableDisableUser {
-    @SerializedName("message")
+public class SetEnableDisableUser {
+    @SerializedName("userId")
     @Expose
-    private String message;
+    private String userId;
 
-    public String getResponse() {
-        return message;
+    @SerializedName("rol")
+    @Expose
+    private String rol;
+
+    @SerializedName("state")
+    @Expose
+    private Boolean state;
+
+    public SetEnableDisableUser(String userId, String rol, Boolean state) {
+        super();
+
+        this.userId = userId;
+        this.rol = rol;
+        this.state = state;
     }
 }

@@ -1,15 +1,11 @@
 <resources>
     <string name="app_name">FastCredits</string>
-    <string name="tag">¡Ingresa ya!</string>
     <string name="e_mail">Email</string>
     <string name="password">Contraseña</string>
     <string name="login">Iniciar sesión</string>
     <string name="swipe_left_for_register">Deslizar para Registrar ahora</string>
 
     <!-- Sign Up screen -->
-    <string name="select_profile_type">Seleccionar tipo de perfil</string>
-    <string name="goto_button">Completar registro</string>
-    <string name="goback_login">Regresar</string>
 
     <!-- Lender SignUp Form -->
     <string name="register">Registrar</string>
@@ -24,7 +20,6 @@
     <string name="homePhone">Teléfono Fijo</string>
     <string name="phone">Celular</string>
     <string name="re_type_password">Confirmar contraseña</string>
-    <string name="swipe_right_for_login">Deslizar para Iniciar sesión</string>
 
     <!-- Profile types -->
     <string-array name="profileType_sign_up">
@@ -40,17 +35,10 @@
         <item>Administrador</item>
     </string-array>
     <!-- Profile types strings -->
-    <string name="profile_clients">Cliente</string>
-    <string name="profile_lender">Prestamista</string>
-    <string name="profile_router">Rutero</string>
-    <string name="profile_admin">Administrador</string>
 
     <string name="profileTypeTitle">Elegir tipo de perfil</string>
     <string name="title_activity_drawer_home">DrawerHome</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_logout">Cerrar sesión</string>
 
@@ -66,7 +54,7 @@
     <string name="title_activity_admin_bottom_naivation">BottomActivity</string>
     <string name="title_home">Solicitudes</string>
     <string name="title_dashboard">Administración</string>
-    <string name="title_notifications">Creación</string>
+    <string name="title_notifications">Usuarios</string>
     <string name="title_bottom_profile">Perfil</string>
     <string name="title_bottom_lender_details">Detalle del prestamista</string>
     <string name="title_bottom_pending_lender_details">Información del prestamista</string>

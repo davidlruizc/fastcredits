@@ -70,10 +70,6 @@ public class Lender {
         return cellphone;
     }
 
-    public String getRandomImage() {
-        return "https://source.unsplash.com/random";
-    }
-
     public String getGender() { return gender; }
 
     public String getCountry() { return country; }
