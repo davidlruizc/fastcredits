@@ -58,6 +58,8 @@ public class Lender {
     @Expose
     private Boolean active;
 
+    public String getId() { return Id; }
+
     public String getFullName() {
         return names + " " + lastname;
     }
