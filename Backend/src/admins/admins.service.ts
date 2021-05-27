@@ -74,6 +74,7 @@ export class AdminsService {
     const list: UsersListDto[] = [];
     users.forEach((user) => {
       list.push({
+        id: user.id,
         address: user.address,
         cellphone: user.cellphone,
         country: user.country,
@@ -89,6 +90,7 @@ export class AdminsService {
     });
     ruteros.forEach((rutero) => {
       list.push({
+        id: rutero.id,
         address: rutero.address,
         cellphone: rutero.cellphone,
         country: rutero.country,
@@ -104,6 +106,7 @@ export class AdminsService {
     });
     prestamistas.forEach((prestamista) => {
       list.push({
+        id: prestamista.id,
         address: prestamista.address,
         cellphone: prestamista.cellphone,
         country: prestamista.country,

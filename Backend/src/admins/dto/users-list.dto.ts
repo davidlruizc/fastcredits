@@ -1,4 +1,5 @@
 export class UsersListDto {
+  id: string;
   state: boolean;
   names: string;
   lastname: string;

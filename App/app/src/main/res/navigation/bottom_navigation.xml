@@ -55,9 +55,9 @@
 
     <fragment
         android:id="@+id/navigation_bottom_notifications"
-        android:name="com.example.fastcredits.ui.notifications.NotificationsFragment"
+        android:name="com.example.fastcredits.ui.adminUsers.AdminUserFragment"
         android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_admin_user" />
 
     <fragment
         android:id="@+id/navigation_bottom_profile"

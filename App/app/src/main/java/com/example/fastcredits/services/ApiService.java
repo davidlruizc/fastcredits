@@ -4,9 +4,13 @@ import com.example.fastcredits.models.Admin;
 import com.example.fastcredits.models.ApiResponse;
 import com.example.fastcredits.models.Countries;
 import com.example.fastcredits.models.Clients;
+import com.example.fastcredits.models.EnableDisableUser;
 import com.example.fastcredits.models.EnableLender;
 import com.example.fastcredits.models.Lenders;
+import com.example.fastcredits.models.SetEnableDisableUser;
 import com.example.fastcredits.models.SignIn;
+import com.example.fastcredits.models.User;
+import com.example.fastcredits.models.Users;
 
 import java.util.ArrayList;
 
@@ -42,4 +46,10 @@ public interface ApiService {
 
     @POST("admins/enablePrestamista")
     Call<ApiResponse> enableLender(@Body EnableLender enableLender);
+
+    @GET("admins/allUsers")
+    Call<Users> getAllUsers();
+
+    @POST("admins/enableDisableUser")
+    Call<EnableDisableUser> enableDisableUser(@Body SetEnableDisableUser setEnableDisableUser);
 }
