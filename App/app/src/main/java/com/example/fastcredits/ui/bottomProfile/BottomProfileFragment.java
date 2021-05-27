@@ -4,20 +4,15 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 
 import com.example.fastcredits.MainActivity;
 import com.example.fastcredits.R;
-import com.example.fastcredits.ui.notifications.NotificationsViewModel;
 import com.example.fastcredits.utils.PreferenceStore;
 
 public class BottomProfileFragment extends Fragment {
