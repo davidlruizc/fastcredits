@@ -7,12 +7,16 @@ import {
   Prestamista,
   PrestamistaSchema,
 } from 'src/prestamista/entities/prestamista.entity';
+import { Rutero, RuteroSchema } from 'src/rutero/entities/rutero.entity';
+import { User, UserSchema } from 'src/users/entities/user.entity';
 
 @Module({
   imports: [
     MongooseModule.forFeature([
       { name: Admin.name, schema: AdminSchema },
       { name: Prestamista.name, schema: PrestamistaSchema },
+      { name: Rutero.name, schema: RuteroSchema },
+      { name: User.name, schema: UserSchema },
     ]),
   ],
   controllers: [AdminsController],

@@ -9,6 +9,10 @@ import {
   Prestamista,
   PrestamistaDocument,
 } from 'src/prestamista/entities/prestamista.entity';
+import { Rutero, RuteroDocument } from 'src/rutero/entities/rutero.entity';
+import { User, UserDocument } from 'src/users/entities/user.entity';
+import { UsersListDto } from './dto/users-list.dto';
+import { EnableDisableUsersDto } from './dto/enable-disable-user.dto';
 
 @Injectable()
 export class AdminsService {
@@ -16,6 +20,8 @@ export class AdminsService {
     @InjectModel(Admin.name) private adminModel: Model<AdminDocument>,
     @InjectModel(Prestamista.name)
     private prestamistaModel: Model<PrestamistaDocument>,
+    @InjectModel(Rutero.name) private ruteroModel: Model<RuteroDocument>,
+    @InjectModel(User.name) private userModel: Model<UserDocument>,
   ) {}
 
   async create(createAdminDto: CreateAdminDto) {
@@ -41,7 +47,7 @@ export class AdminsService {
   }
 
   async allPrestamistas() {
-    const prestamistas = await this.prestamistaModel.find();
+    const prestamistas = await this.prestamistaModel.find({ state: true });
     return prestamistas;
   }
 
@@ -58,6 +64,82 @@ export class AdminsService {
         'El prestamista no existe',
         HttpStatus.UNAUTHORIZED,
       );
+    }
+  }
+
+  async allUsers() {
+    const users = await this.userModel.find();
+    const ruteros = await this.ruteroModel.find();
+    const prestamistas = await this.prestamistaModel.find();
+    const list: UsersListDto[] = [];
+    users.forEach((user) => {
+      list.push({
+        address: user.address,
+        cellphone: user.cellphone,
+        country: user.country,
+        document: user.document,
+        email: user.email,
+        gender: user.gender,
+        lastname: user.lastname,
+        names: user.names,
+        state: user.state,
+        date: user.date,
+        rol: 'Usuario',
+      });
+    });
+    ruteros.forEach((rutero) => {
+      list.push({
+        address: rutero.address,
+        cellphone: rutero.cellphone,
+        country: rutero.country,
+        document: rutero.document,
+        email: rutero.email,
+        gender: rutero.gender,
+        lastname: rutero.lastname,
+        names: rutero.names,
+        state: rutero.state,
+        date: rutero.date,
+        rol: 'Rutero',
+      });
+    });
+    prestamistas.forEach((prestamista) => {
+      list.push({
+        address: prestamista.address,
+        cellphone: prestamista.cellphone,
+        country: prestamista.country,
+        document: prestamista.document,
+        email: prestamista.email,
+        gender: prestamista.gender,
+        lastname: prestamista.lastname,
+        names: prestamista.names,
+        state: prestamista.state,
+        date: prestamista.date,
+        rol: 'Prestamista',
+      });
+    });
+    list.sort(function (a, b) {
+      return +new Date(b.date) - +new Date(a.date);
+    });
+    return list;
+  }
+
+  async enableDisableUser(enableDisableUsersDto: EnableDisableUsersDto) {
+    let user: UserDocument | RuteroDocument | PrestamistaDocument | null = null;
+    if (enableDisableUsersDto.rol === 'Usuario') {
+      user = await this.userModel.findById(enableDisableUsersDto.userId);
+    } else if (enableDisableUsersDto.rol === 'Rutero') {
+      user = await this.ruteroModel.findById(enableDisableUsersDto.userId);
+    } else if (enableDisableUsersDto.rol === 'Prestamista') {
+      user = await this.prestamistaModel.findById(enableDisableUsersDto.userId);
+    }
+    if (user) {
+      user.state = enableDisableUsersDto.state;
+      await user.save();
+      return `El usuario se ha ${
+        enableDisableUsersDto.state ? 'activado' : 'desactivado'
+      } exitosamente`;
+    } else {
+      throw new HttpException('El usuario no existe', HttpStatus.UNAUTHORIZED);
     }
   }
 }
