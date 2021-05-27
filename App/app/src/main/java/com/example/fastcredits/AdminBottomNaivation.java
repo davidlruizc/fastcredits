@@ -17,10 +17,11 @@ public class AdminBottomNaivation extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_bottom_naivation);
         BottomNavigationView navView = findViewById(R.id.nav_bottom_view);
+
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_bottom_home, R.id.navigation_bottom_dashboard, R.id.navigation_bottom_notifications)
+                R.id.navigation_bottom_home, R.id.navigation_bottom_dashboard, R.id.navigation_bottom_notifications, R.id.navigation_bottom_profile)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_bottom_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);

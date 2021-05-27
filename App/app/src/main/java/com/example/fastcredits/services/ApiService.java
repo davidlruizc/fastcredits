@@ -4,6 +4,7 @@ import com.example.fastcredits.models.Admin;
 import com.example.fastcredits.models.ApiResponse;
 import com.example.fastcredits.models.Countries;
 import com.example.fastcredits.models.Clients;
+import com.example.fastcredits.models.Lenders;
 import com.example.fastcredits.models.SignIn;
 
 import java.util.ArrayList;
@@ -31,4 +32,10 @@ public interface ApiService {
 
     @POST("admins/signUp")
     Call<ApiResponse> signUpAdmin(@Body Admin admin);
+
+    @GET("admins/pendingPrestamistas")
+    Call<Lenders> getPendingLenders();
+
+    @GET("admins/allPrestamistas")
+    Call<Lenders> getAllLenders();
 }

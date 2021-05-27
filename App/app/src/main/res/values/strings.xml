@@ -27,6 +27,12 @@
     <string name="swipe_right_for_login">Deslizar para Iniciar sesión</string>
 
     <!-- Profile types -->
+    <string-array name="profileType_sign_up">
+        <item>Cliente</item>
+        <item>Prestamista</item>
+    </string-array>
+
+    <!-- Profile types -->
     <string-array name="profileType">
         <item>Cliente</item>
         <item>Prestamista</item>
@@ -57,8 +63,12 @@
     <string name="menu_reports">Informes</string>
 
     <string name="rememberUser">Recordar usuario</string>
-    <string name="title_activity_admin_bottom_naivation">MainActivity</string>
+    <string name="title_activity_admin_bottom_naivation">BottomActivity</string>
     <string name="title_home">Solicitudes</string>
     <string name="title_dashboard">Administración</string>
     <string name="title_notifications">Creación</string>
+    <string name="title_bottom_profile">Perfil</string>
+    <string name="title_bottom_lender_details">Detalle del prestamista</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
