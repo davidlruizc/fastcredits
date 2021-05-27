@@ -58,6 +58,9 @@
     <string name="title_bottom_profile">Perfil</string>
     <string name="title_bottom_lender_details">Detalle del prestamista</string>
     <string name="title_bottom_pending_lender_details">Información del prestamista</string>
+
+    <string name="text_enable_lender">Habilitar prestamista</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

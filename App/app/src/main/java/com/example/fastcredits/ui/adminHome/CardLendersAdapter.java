@@ -51,6 +51,7 @@ public class CardLendersAdapter extends RecyclerView.Adapter<CardLendersAdapter.
         holder.gender = modal.getGender();
         holder.country = modal.getCountry();
         holder.date = modal.getDate();
+        holder.Id = modal.getId();
     }
 
     @Override
@@ -63,7 +64,7 @@ public class CardLendersAdapter extends RecyclerView.Adapter<CardLendersAdapter.
         private TextView fullName, email, cellphone;
         private ImageView image;
         private MaterialButton viewMore;
-        private String gender, country;
+        private String gender, country, Id;
         private Date date;
 
         public RecyclerViewHolder(View itemView) {
@@ -81,6 +82,7 @@ public class CardLendersAdapter extends RecyclerView.Adapter<CardLendersAdapter.
                 bundle.putString("cellphone", cellphone.getText().toString());
                 bundle.putString("gender", gender);
                 bundle.putString("country", country);
+                bundle.putString("Id", Id);
 
                 DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(mcontext);
 

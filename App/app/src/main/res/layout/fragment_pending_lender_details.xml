@@ -62,8 +62,18 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/profile_layout"
             android:layout_marginTop="5dp"
-            android:layout_marginBottom="35dp"
+            android:layout_marginBottom="55dp"
             android:orientation="vertical">
+
+            <Button
+                android:id="@+id/enable_lender_btn"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/text_enable_lender"
+                android:elevation="4dp"
+                android:layout_margin="15dp"
+                style="@style/Widget.MaterialComponents.Button.Icon"
+                />
 
             <TextView
                 android:id="@+id/user_gender"
@@ -94,6 +104,11 @@
                 android:elevation="4dp"
                 android:padding="20dp" />
 
+
+
         </LinearLayout>
+
+
+
     </RelativeLayout>
 </ScrollView>
