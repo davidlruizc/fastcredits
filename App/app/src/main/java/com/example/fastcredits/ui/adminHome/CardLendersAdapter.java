@@ -17,6 +17,7 @@ import com.example.fastcredits.models.Lender;
 import com.example.fastcredits.R;
 import com.google.android.material.button.MaterialButton;
 
+import java.text.BreakIterator;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -25,10 +26,6 @@ public class CardLendersAdapter extends RecyclerView.Adapter<CardLendersAdapter.
     // creating a variable for our array list and context.
     private ArrayList<Lender> lendersArrayList;
     private Context mcontext;
-    private String gender;
-    private String country;
-    private String address;
-    private Date date;
 
     // creating a constructor class.
     public CardLendersAdapter(ArrayList<Lender> recyclerDataArrayList, Context mcontext) {
@@ -51,10 +48,9 @@ public class CardLendersAdapter extends RecyclerView.Adapter<CardLendersAdapter.
         holder.fullName.setText(modal.getFullName());
         holder.email.setText(modal.getEmail());
         holder.cellphone.setText(modal.getCellphone());
-        gender = modal.getGender();
-        country = modal.getCountry();
-        address = modal.getAddress();
-        date = modal.getDate();
+        holder.gender = modal.getGender();
+        holder.country = modal.getCountry();
+        holder.date = modal.getDate();
     }
 
     @Override
@@ -67,6 +63,8 @@ public class CardLendersAdapter extends RecyclerView.Adapter<CardLendersAdapter.
         private TextView fullName, email, cellphone;
         private ImageView image;
         private MaterialButton viewMore;
+        private String gender, country;
+        private Date date;
 
         public RecyclerViewHolder(View itemView) {
             super(itemView);
@@ -81,10 +79,14 @@ public class CardLendersAdapter extends RecyclerView.Adapter<CardLendersAdapter.
                 bundle.putString("full_name", fullName.getText().toString());
                 bundle.putString("email", email.getText().toString());
                 bundle.putString("cellphone", cellphone.getText().toString());
+                bundle.putString("gender", gender);
+                bundle.putString("country", country);
 
                 DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(mcontext);
 
-                Toast.makeText(mcontext, dateFormat.format(date), Toast.LENGTH_LONG).show();
+                String formatDate = dateFormat.format(date);
+
+                bundle.putString("date", formatDate);
 
                 Navigation.findNavController(itemView).navigate(R.id.navigation_bottom_pending_lender_details, bundle);
             });
