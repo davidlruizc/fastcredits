@@ -22,4 +22,10 @@
         android:name="com.example.fastcredits.ui.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
+
+    <fragment
+        android:id="@+id/navigation_bottom_profile"
+        android:name="com.example.fastcredits.ui.bottomProfile.BottomProfileFragment"
+        android:label="@string/title_bottom_profile"
+        tools:layout="@layout/fragment_bottom_profile" />
 </navigation>
