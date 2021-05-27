@@ -10,6 +10,6 @@ export class CountriesService {
   ) {}
 
   async findAll() {
-    return await this.countryModel.find();
+    return await this.countryModel.find().sort({ name: 1 });
   }
 }
