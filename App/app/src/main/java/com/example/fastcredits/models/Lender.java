@@ -3,6 +3,8 @@ package com.example.fastcredits.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Date;
+
 public class Lender {
     @SerializedName("_id")
     @Expose
@@ -46,7 +48,7 @@ public class Lender {
 
     @SerializedName("date")
     @Expose
-    private String date;
+    private Date date;
 
     @SerializedName("state")
     @Expose
@@ -72,7 +74,15 @@ public class Lender {
         return "https://source.unsplash.com/random";
     }
 
-    public Lender(String Id, String email, String password, String document, String names, String lastname, String gender, String country, String address, String cellphone, String date, Boolean state, Boolean active) {
+    public String getGender() { return gender; }
+
+    public String getCountry() { return country; }
+
+    public String getAddress() { return address; }
+
+    public Date getDate() { return date; }
+
+    public Lender(String Id, String email, String password, String document, String names, String lastname, String gender, String country, String address, String cellphone, Date date, Boolean state, Boolean active) {
         this.Id = Id;
         this.email = email;
         this.password = password;
