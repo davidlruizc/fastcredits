@@ -9,7 +9,6 @@ import com.example.fastcredits.models.EnableLender;
 import com.example.fastcredits.models.Lenders;
 import com.example.fastcredits.models.SetEnableDisableUser;
 import com.example.fastcredits.models.SignIn;
-import com.example.fastcredits.models.User;
 import com.example.fastcredits.models.Users;
 
 import java.util.ArrayList;
