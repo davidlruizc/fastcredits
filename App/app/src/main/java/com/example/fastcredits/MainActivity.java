@@ -37,12 +37,11 @@ public class MainActivity extends AppCompatActivity {
             viewPager.setAdapter(pagerAdapter);
         } else {
             switch (PreferenceStore.getRolePersisted(getApplicationContext())) {
-                // TODO: replace other activities acording the navigation state
                 case 0: // client
                     startActivity(new Intent(MainActivity.this, UsersDrawerActivity.class));
                     break;
                 case 1: // lender
-                    startActivity(new Intent(MainActivity.this, UsersDrawerActivity.class));
+                    startActivity(new Intent(MainActivity.this, RouterDrawerActivity.class));
                     break;
                 case 2: // router
                     startActivity(new Intent(MainActivity.this, DrawerHome.class));

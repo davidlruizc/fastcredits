@@ -113,8 +113,7 @@ public class Login extends Fragment {
                             startActivity(new Intent(getActivity(), DrawerHome.class));
                             break;
                         case 2:
-                            // TODO: Replace with other activities
-                            startActivity(new Intent(getActivity(), DrawerHome.class));
+                            startActivity(new Intent(getActivity(), RouterDrawerActivity.class));
                             break;
                         case 3:
                             startActivity(new Intent(getActivity(), AdminBottomNaivation.class));

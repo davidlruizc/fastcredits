@@ -76,4 +76,10 @@
     <!-- Clients Drawer -->
     <string name="menu_mycredits">Mis créditos</string>
     <string name="menu_all_lenders">Prestamistas</string>
+    <string name="title_activity_router_drawer">RouterDrawerActivity</string>
+
+    <!-- Routers Drawer -->
+    <string name="menu_active_lenders">Prestamistas</string>
+    <string name="menu_clients_visit">Clientes</string>
+    <string name="menu_router_reports">Reportes</string>
 </resources>

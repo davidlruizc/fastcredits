@@ -20,21 +20,21 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 
-public class UsersDrawerActivity extends AppCompatActivity {
+public class RouterDrawerActivity  extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
     private TextView userEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_drawer_users);
+        setContentView(R.layout.activity_drawer_router);
 
         String email = PreferenceStore.getPersistUser(getApplicationContext());
 
-        Toolbar toolbar = findViewById(R.id.users_toolbar);
+        Toolbar toolbar = findViewById(R.id.router_toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = findViewById(R.id.fab_users);
+        FloatingActionButton fab = findViewById(R.id.fab_router);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -43,9 +43,9 @@ public class UsersDrawerActivity extends AppCompatActivity {
             }
         });
 
-        DrawerLayout drawer = findViewById(R.id.drawer_users_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_router_layout);
         // Get context for drawer ui
-        NavigationView navigationView = findViewById(R.id.nav_users_view);
+        NavigationView navigationView = findViewById(R.id.nav_router_view);
         View headerView = navigationView.getHeaderView(0);
 
         userEmail = headerView.findViewById(R.id.drw_user_email);
@@ -57,20 +57,19 @@ public class UsersDrawerActivity extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_users, R.id.nav_all_lenders)
+                R.id.nav_router, R.id.nav_router_clients, R.id.nav_router_reports)
                 .setDrawerLayout(drawer)
                 .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_users_host_fragment);
+        NavController navController = Navigation.findNavController(this, R.id.nav_router_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        Toolbar tb = findViewById(R.id.users_toolbar);
-        getMenuInflater().inflate(R.menu.users_drawer, menu);
+        Toolbar tb = findViewById(R.id.router_toolbar);
+        getMenuInflater().inflate(R.menu.router_drawer, menu);
         tb.setOnMenuItemClickListener(
                 new Toolbar.OnMenuItemClickListener() {
                     @Override
@@ -95,7 +94,7 @@ public class UsersDrawerActivity extends AppCompatActivity {
 
     @Override
     public boolean onSupportNavigateUp() {
-        NavController navController = Navigation.findNavController(this, R.id.nav_users_host_fragment);
+        NavController navController = Navigation.findNavController(this, R.id.nav_router_host_fragment);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }

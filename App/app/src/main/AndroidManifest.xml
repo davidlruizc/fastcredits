@@ -14,6 +14,11 @@
         android:theme="@style/Theme.FastCredits"
         android:usesCleartextTraffic="true" >
         <activity
+            android:name=".RouterDrawerActivity"
+            android:label="@string/title_activity_router_drawer"
+            android:theme="@style/Theme.FastCredits.NoActionBar" >
+        </activity>
+        <activity
             android:name=".UsersDrawerActivity"
             android:label="@string/title_activity_users_drawer"
             android:theme="@style/Theme.FastCredits.NoActionBar" >
