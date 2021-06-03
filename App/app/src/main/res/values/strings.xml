@@ -83,4 +83,15 @@
     <string name="menu_active_lenders">Prestamistas</string>
     <string name="menu_clients_visit">Clientes</string>
     <string name="menu_router_reports">Reportes</string>
+
+    <!-- Lender Loan Credits -->
+    <string name="lender_periodicity">Periodicidad</string>
+    <string name="lender_client">Seleccionar cliente</string>
+    <string name="lender_amount">Monto del crédito</string>
+    <string name="lender_interest">Ingrese el interés</string>
+    <string name="lender_payment_method">Seleccione forma de pago</string>
+    <string name="lender_payment_method_card">Tarjeta</string>
+    <string name="lender_payment_method_cash">Efectivo</string>
+    <string name="lender_btn_create_credit">Crear crédito</string>
+
 </resources>

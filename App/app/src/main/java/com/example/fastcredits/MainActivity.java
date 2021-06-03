@@ -41,10 +41,10 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(new Intent(MainActivity.this, UsersDrawerActivity.class));
                     break;
                 case 1: // lender
-                    startActivity(new Intent(MainActivity.this, RouterDrawerActivity.class));
+                    startActivity(new Intent(MainActivity.this, DrawerHome.class));
                     break;
                 case 2: // router
-                    startActivity(new Intent(MainActivity.this, DrawerHome.class));
+                    startActivity(new Intent(MainActivity.this, RouterDrawerActivity.class));
                     break;
                 case 3: // admin
                     startActivity(new Intent(MainActivity.this, AdminBottomNaivation.class));
