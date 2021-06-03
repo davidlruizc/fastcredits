@@ -10,13 +10,15 @@ public class PreferenceStore {
     public static final String ROLE = "ROLE";
     public static final String PERSIST_SESSION = "PERSIST_SESSION";
     public static final String PERSIST_CREDENTIALS = "PERSIST_CREDENTIALS";
+    public static final String PERSIST_MONGO_ID = "PERSIST_MONGO_ID";
 
-    public static boolean setEmailPassword(String email, String password, int role, Context context) {
+    public static boolean setEmailPassword(String email, String password, int role, String mongoId, Context context) {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putString(EMAIL, email);
         editor.putString(PASSWORD, password);
         editor.putInt(ROLE,  role);
+        editor.putString(PERSIST_MONGO_ID, mongoId);
         editor.apply();
         return true;
     }
@@ -61,6 +63,11 @@ public class PreferenceStore {
     public static int getRolePersisted(Context context) {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         return preferences.getInt(ROLE, 5);
+    }
+
+    public static String getPersistMongoId(Context context) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        return preferences.getString(PERSIST_MONGO_ID, null);
     }
 
     public static void clearSession(Context context) {

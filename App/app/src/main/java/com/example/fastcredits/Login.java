@@ -99,7 +99,7 @@ public class Login extends Fragment {
             @Override
             public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
                 if (response.isSuccessful()) {
-                    PreferenceStore.setEmailPassword(signIn.getEmail(), signIn.getPassword(), signIn.getRole(), getContext());
+                    PreferenceStore.setEmailPassword(signIn.getEmail(), signIn.getPassword(), signIn.getRole(), response.body().toString(), getContext());
                     PreferenceStore.setPersistSession(true, getContext());
                     PreferenceStore.setPersistCredentials(rememberUser, getContext());
 
