@@ -12,6 +12,12 @@
         tools:layout="@layout/fragment_users_my_credits" />
 
     <fragment
+        android:id="@+id/nav_history_users"
+        android:name="com.example.fastcredits.ui.userHistoryCredits.UsersHistoryCreditsFragment"
+        android:label="@string/menu_history_credits"
+        tools:layout="@layout/fragment_users_my_credits" />
+
+    <fragment
         android:id="@+id/nav_all_lenders"
         android:name="com.example.fastcredits.ui.usersAllLenders.UsersAllLenders"
         android:label="@string/menu_all_lenders"
