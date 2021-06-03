@@ -1,6 +1,7 @@
 package com.example.fastcredits.services;
 
 import com.example.fastcredits.models.Admin;
+import com.example.fastcredits.models.AllUsers;
 import com.example.fastcredits.models.ApiResponse;
 import com.example.fastcredits.models.Countries;
 import com.example.fastcredits.models.Clients;
@@ -51,4 +52,7 @@ public interface ApiService {
 
     @POST("admins/enableDisableUser")
     Call<EnableDisableUser> enableDisableUser(@Body SetEnableDisableUser setEnableDisableUser);
+
+    @GET("admins/allUsersAccounts")
+    Call<AllUsers> getAllUsersAccounts();
 }
