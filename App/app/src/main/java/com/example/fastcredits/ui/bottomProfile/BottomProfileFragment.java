@@ -49,6 +49,7 @@ public class BottomProfileFragment extends Fragment {
                 // CLEAR STORE
                 Boolean persistCredentials = PreferenceStore.getPersistCredentials(getContext());
                 PreferenceStore.setPersistSession(false, getContext());
+                PreferenceStore.clearMongoId(getApplicationContext());
 
                 if (!persistCredentials) {
                     PreferenceStore.clearSession(getContext());

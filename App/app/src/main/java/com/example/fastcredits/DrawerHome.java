@@ -78,6 +78,7 @@ public class DrawerHome extends AppCompatActivity {
                         // CLEAR STORE
                         Boolean persistCredentials = PreferenceStore.getPersistCredentials(getApplicationContext());
                         PreferenceStore.setPersistSession(false, getApplicationContext());
+                        PreferenceStore.clearMongoId(getApplicationContext());
 
                         if (!persistCredentials) {
                             PreferenceStore.clearSession(getApplicationContext());

@@ -23,6 +23,8 @@ public class PreferenceStore {
         return true;
     }
 
+
+
     public static boolean setPersistSession(Boolean persistSession, Context context) {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor = preferences.edit();
@@ -68,6 +70,12 @@ public class PreferenceStore {
     public static String getPersistMongoId(Context context) {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         return preferences.getString(PERSIST_MONGO_ID, null);
+    }
+
+    public static void clearMongoId(Context context) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.remove(PERSIST_MONGO_ID);
     }
 
     public static void clearSession(Context context) {
