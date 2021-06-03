@@ -3,12 +3,29 @@ package com.example.fastcredits.ui.usersMyCredits;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.example.fastcredits.R;
+import com.example.fastcredits.models.AllCredits;
+import com.example.fastcredits.models.Credit;
+import com.example.fastcredits.models.User;
+import com.example.fastcredits.models.Users;
+import com.example.fastcredits.services.ApiAdapter;
+import com.example.fastcredits.ui.adminUsers.CardUsersAdapter;
+import com.example.fastcredits.utils.PreferenceStore;
+
+import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -57,10 +74,64 @@ public class UsersMyCredits extends Fragment {
         }
     }
 
+    private RecyclerView userCardRV;
+    private ProgressBar progressBar;
+    private ArrayList<Credit> creditArrayList;
+    private CardCreditsAdapter cardCreditAdapter;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_users_my_credits, container, false);
+        View root =  inflater.inflate(R.layout.fragment_users_my_credits, container, false);
+
+        // initializing our variables.
+        userCardRV = root.findViewById(R.id.credit_requests_recycler);
+        progressBar = root.findViewById(R.id.credit_requests_loading);
+
+        // creating new array list.
+        creditArrayList = new ArrayList<>();
+
+        GetUsersRequests();
+
+        return root;
+    }
+
+    public void GetUsersRequests() {
+        String id = PreferenceStore.getPersistMongoId(this.getContext());
+        Call<AllCredits> call = ApiAdapter.getApiService().getCredits(id);
+        call.enqueue(new Callback<AllCredits>() {
+            @Override
+            public void onResponse(Call<AllCredits> call, Response<AllCredits> response) {
+                if (response.isSuccessful()) {
+                    // on successful we are hiding our progressbar.
+                    progressBar.setVisibility(View.GONE);
+
+                    // below line is to add our data from api to our array list.
+                    creditArrayList = response.body().getCredits();
+
+                    // below line we are running a loop to add data to our adapter class.
+                    for (int i = 0; i < creditArrayList.size(); i++) {
+                        cardCreditAdapter = new CardCreditsAdapter(creditArrayList, getContext());
+
+                        // below line is to set layout manager for our recycler view.
+                        LinearLayoutManager manager = new LinearLayoutManager(getContext());
+
+                        // setting layout manager for our recycler view.
+                        userCardRV.setLayoutManager(manager);
+
+                        // below line is to set adapter to our recycler view.
+                        userCardRV.setAdapter(cardCreditAdapter);
+                    }
+                } else {
+                    Toast.makeText(getContext(), "not found", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<AllCredits> call, Throwable t) {
+                Toast.makeText(getContext(), "network failure :( inform the user and possibly retry", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

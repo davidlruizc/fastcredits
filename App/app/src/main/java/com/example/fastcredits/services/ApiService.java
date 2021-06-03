@@ -1,6 +1,7 @@
 package com.example.fastcredits.services;
 
 import com.example.fastcredits.models.Admin;
+import com.example.fastcredits.models.AllCredits;
 import com.example.fastcredits.models.AllUsers;
 import com.example.fastcredits.models.ApiResponse;
 import com.example.fastcredits.models.Countries;
@@ -19,6 +20,8 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface ApiService {
     @GET("countries")
@@ -57,6 +60,12 @@ public interface ApiService {
     @GET("admins/allUsersAccounts")
     Call<AllUsers> getAllUsersAccounts();
 
+<<<<<<< HEAD
     @POST("prestamista/createCredit")
     Call<ApiResponse> createCredit(@Body Credit credit);
+=======
+    @GET("prestamista/getCredits/{id}")
+    Call<AllCredits> getCredits(@Path("id") String id);
+
+>>>>>>> 7603965205a5c6433c8066ec5b981c3f4441bdcb
 }
