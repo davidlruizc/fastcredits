@@ -167,9 +167,4 @@ export class UsersService {
       );
     }
   }
-
-  async getInformation(id: string) {
-    const user = await this.userModel.findById(id);
-    return user;
-  }
 }
