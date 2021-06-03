@@ -107,7 +107,7 @@ public class Login extends Fragment {
 
                     switch (signIn.getRole()) {
                         case 0:
-                            startActivity(new Intent(getActivity(), DrawerHome.class));
+                            startActivity(new Intent(getActivity(), UsersDrawerActivity.class));
                             break;
                         case 1:
                             startActivity(new Intent(getActivity(), DrawerHome.class));
