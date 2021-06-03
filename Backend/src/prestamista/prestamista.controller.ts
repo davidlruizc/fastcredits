@@ -1,6 +1,7 @@
 import { Controller, Post, Body } from '@nestjs/common';
 import { PrestamistaService } from './prestamista.service';
 import { CreatePrestamistaDto } from './dto/create-prestamista.dto';
+import { CreateCreditDto } from './dto/create-credit.dto';
 
 @Controller('prestamista')
 export class PrestamistaController {
@@ -11,6 +12,12 @@ export class PrestamistaController {
     const result = await this.prestamistaService.createPrestamista(
       createUserDto,
     );
+    return { message: result };
+  }
+
+  @Post('/createCredit')
+  async createCredit(@Body() createCreditDto: CreateCreditDto) {
+    const result = await this.prestamistaService.createCredit(createCreditDto);
     return { message: result };
   }
 }
