@@ -9,12 +9,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.fastcredits.R;
 import com.example.fastcredits.models.Lender;
-import com.example.fastcredits.ui.dashboard.CardAdminAdapter;
 import com.google.android.material.button.MaterialButton;
 
 import java.util.ArrayList;
