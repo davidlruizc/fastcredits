@@ -126,6 +126,11 @@ export class AdminsService {
     return list;
   }
 
+  async allUsersAccounts() {
+    const users = await this.userModel.find();
+    return users;
+  }
+
   async enableDisableUser(enableDisableUsersDto: EnableDisableUsersDto) {
     let user: UserDocument | RuteroDocument | PrestamistaDocument | null = null;
     if (enableDisableUsersDto.rol === 'Usuario') {

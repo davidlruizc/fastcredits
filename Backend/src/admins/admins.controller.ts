@@ -39,6 +39,12 @@ export class AdminsController {
     return { message: result };
   }
 
+  @Get('/allUsersAccounts')
+  async allUsersAccounts() {
+    const result = await this.adminsService.allUsersAccounts();
+    return { data: result };
+  }
+
   @Post('/enableDisableUser')
   async enableDisableUser(
     @Body() enableDisableUsersDto: EnableDisableUsersDto,
