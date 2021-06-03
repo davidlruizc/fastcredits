@@ -2,8 +2,6 @@ import {
   Controller,
   Post,
   Body,
-  Param,
-  Get,
   HttpException,
   HttpStatus,
 } from '@nestjs/common';
@@ -44,11 +42,5 @@ export class UsersController {
         );
     }
     return { message: result };
-  }
-
-  @Get(':id')
-  async getInformation(@Param('id') id: string) {
-    const result = await this.usersService.getInformation(id);
-    return { data: result };
   }
 }

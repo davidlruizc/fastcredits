@@ -50,4 +50,11 @@ export class PrestamistaService {
     await createdCredit.save();
     return 'El credito se ha creado satisfactoriamente';
   }
+
+  async getCredits(id: string) {
+    const credits = await this.creditModel.find({
+      client: new Types.ObjectId(id),
+    });
+    return credits;
+  }
 }
