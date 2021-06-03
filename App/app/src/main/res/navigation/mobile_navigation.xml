@@ -33,11 +33,11 @@
         android:id="@+id/nav_loan"
         android:name="com.example.fastcredits.ui.loan.LoanFragment"
         android:label="@string/menu_loan"
-        tools:layout="@layout/fragment_slideshow" />
+        tools:layout="@layout/fragment_loan" />
 
     <fragment
         android:id="@+id/nav_reports"
         android:name="com.example.fastcredits.ui.Reports.ReportsFragment"
         android:label="@string/menu_reports"
-        tools:layout="@layout/fragment_slideshow" />
+        tools:layout="@layout/fragment_reports" />
 </navigation>

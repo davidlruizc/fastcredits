@@ -1,24 +1,119 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.loan.LoanFragment">
 
-    <TextView
-        android:id="@+id/text_loan"
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:gravity="center_horizontal" />
+        android:layout_height="match_parent"
+        android:padding="20dp"
+        android:fillViewport="true">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:stretchColumns="1">
+
+            <TextView
+                android:id="@+id/lender_client"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/lender_client"
+                android:textSize="17sp"
+                android:layout_marginStart="25dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="25dp" />
+
+            <Spinner
+                android:id="@+id/client_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="10dp"/>
+
+            <TextView
+                android:id="@+id/lender_payment_method"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/lender_payment_method"
+                android:textSize="17sp"
+                android:layout_marginStart="25dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="25dp" />
+
+            <RadioGroup
+                android:id="@+id/lender_radio_payment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="10dp"
+                android:orientation="vertical">
+
+                <RadioButton android:id="@+id/lender_radio_payment_card"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lender_payment_method_card"/>
+                <RadioButton android:id="@+id/lender_radio_payment_cash"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lender_payment_method_cash"/>
+
+            </RadioGroup>
+
+            <EditText
+                android:id="@+id/lender_periodicity"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="@string/lender_periodicity"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="10dp"
+                android:padding="15dp"
+                android:inputType="number"
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/lender_amount"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="@string/lender_amount"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="10dp"
+                android:padding="15dp"
+                android:inputType="number"
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/lender_interest"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="@string/lender_interest"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="10dp"
+                android:padding="15dp"
+                android:inputType="number"
+                android:textSize="15sp" />
+
+            <Button
+                android:id="@+id/btn_lender_create_credit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_custom"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="30dp"
+                android:layout_marginTop="30dp"
+                android:layout_centerInParent="true"
+                android:textColor="@android:color/white"
+                android:text="@string/lender_btn_create_credit"/>
+
+        </TableLayout>
+    </ScrollView>
+
+</RelativeLayout>
