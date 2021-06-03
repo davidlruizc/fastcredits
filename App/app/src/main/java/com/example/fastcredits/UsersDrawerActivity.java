@@ -55,9 +55,9 @@ public class UsersDrawerActivity extends AppCompatActivity {
         }
 
         // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
+        // menu should be considered as top level destinations. 
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_users, R.id.nav_all_lenders)
+                R.id.nav_users, R.id.nav_history_users, R.id.nav_all_lenders)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_users_host_fragment);

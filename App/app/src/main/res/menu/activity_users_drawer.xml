@@ -8,6 +8,12 @@
             android:id="@+id/nav_users"
             android:icon="@drawable/ic_baseline_credit_card_24"
             android:title="@string/menu_mycredits" />
+
+        <item
+            android:id="@+id/nav_history_users"
+            android:icon="@drawable/ic_baseline_credit_card_off_24"
+            android:title="@string/menu_history_credits" />
+
         <item
             android:id="@+id/nav_all_lenders"
             android:icon="@drawable/ic_baseline_attach_money_24"

@@ -75,6 +75,7 @@
 
     <!-- Clients Drawer -->
     <string name="menu_mycredits">Mis créditos</string>
+    <string name="menu_history_credits">Historico créditos</string>
     <string name="menu_all_lenders">Prestamistas</string>
     <string name="title_activity_router_drawer">RouterDrawerActivity</string>
 
