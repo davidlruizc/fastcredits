@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.fastcredits">
+    package="com.example.fastcredits" >
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -12,15 +12,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FastCredits"
-        android:usesCleartextTraffic="true">
+        android:usesCleartextTraffic="true" >
+        <activity
+            android:name=".UsersDrawerActivity"
+            android:label="@string/title_activity_users_drawer"
+            android:theme="@style/Theme.FastCredits.NoActionBar" >
+        </activity>
         <activity
             android:name=".AdminBottomNaivation"
-            android:label="@string/title_activity_admin_bottom_naivation"></activity>
+            android:label="@string/title_activity_admin_bottom_naivation" />
         <activity
             android:name=".DrawerHome"
             android:label="@string/title_activity_drawer_home"
             android:theme="@style/Theme.FastCredits.NoActionBar" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

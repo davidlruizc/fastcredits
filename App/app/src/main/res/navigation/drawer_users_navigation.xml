@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_users_navigation"
+    app:startDestination="@+id/nav_users">
+
+    <fragment
+        android:id="@+id/nav_users"
+        android:name="com.example.fastcredits.ui.usersMyCredits.UsersMyCredits"
+        android:label="@string/menu_mycredits"
+        tools:layout="@layout/fragment_users_my_credits" />
+
+    <fragment
+        android:id="@+id/nav_all_lenders"
+        android:name="com.example.fastcredits.ui.usersAllLenders.UsersAllLenders"
+        android:label="@string/menu_all_lenders"
+        tools:layout="@layout/fragment_users_all_lenders" />
+</navigation>
