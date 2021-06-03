@@ -15,11 +15,11 @@ import { Rutero, RuteroDocument } from 'src/rutero/entities/rutero.entity';
 @Injectable()
 export class UsersService {
   constructor(
-    @InjectModel(User.name) private userModel: Model<UserDocument>,
     @InjectModel(Prestamista.name)
     private prestamistaModel: Model<PrestamistaDocument>,
     @InjectModel(Admin.name) private adminModel: Model<AdminDocument>,
     @InjectModel(Rutero.name) private ruteroModel: Model<RuteroDocument>,
+    @InjectModel(User.name) private userModel: Model<UserDocument>,
   ) {}
 
   async create(createUserDto: CreateUserDto) {
