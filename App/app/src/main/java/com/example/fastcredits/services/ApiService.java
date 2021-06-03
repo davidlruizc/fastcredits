@@ -5,6 +5,7 @@ import com.example.fastcredits.models.AllUsers;
 import com.example.fastcredits.models.ApiResponse;
 import com.example.fastcredits.models.Countries;
 import com.example.fastcredits.models.Clients;
+import com.example.fastcredits.models.Credit;
 import com.example.fastcredits.models.EnableDisableUser;
 import com.example.fastcredits.models.EnableLender;
 import com.example.fastcredits.models.Lenders;
@@ -55,4 +56,7 @@ public interface ApiService {
 
     @GET("admins/allUsersAccounts")
     Call<AllUsers> getAllUsersAccounts();
+
+    @POST("prestamista/createCredit")
+    Call<ApiResponse> createCredit(@Body Credit credit);
 }

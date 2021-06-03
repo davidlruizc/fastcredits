@@ -100,6 +100,25 @@
                 android:inputType="number"
                 android:textSize="15sp" />
 
+            <TextView
+                android:id="@+id/lender_fee"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/lender_fee"
+                android:textSize="17sp"
+                android:layout_marginStart="25dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="25dp" />
+
+            <TextView
+                android:id="@+id/lender_fee_tx"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="17sp"
+                android:layout_marginStart="25dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="25dp" />
+
             <Button
                 android:id="@+id/btn_lender_create_credit"
                 android:layout_width="match_parent"

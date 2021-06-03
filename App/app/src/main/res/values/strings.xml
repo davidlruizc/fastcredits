@@ -93,5 +93,6 @@
     <string name="lender_payment_method_card">Tarjeta</string>
     <string name="lender_payment_method_cash">Efectivo</string>
     <string name="lender_btn_create_credit">Crear crédito</string>
+    <string name="lender_fee">Cuota del crédito:</string>
 
 </resources>
