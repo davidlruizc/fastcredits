@@ -71,11 +71,11 @@ public class LoanFragment extends Fragment {
             String amountText = amount.getText().toString();
             String interestText = interest.getText().toString();
 
-            double fee = Fee(Integer.parseInt(periodicityText), Integer.parseInt(amountText), Integer.parseInt(interestText));
+            float fee = Fee(Integer.parseInt(periodicityText), Integer.parseInt(amountText), Integer.parseInt(interestText));
 
             feeText.setText(String.valueOf(fee));
 
-            Credit credit = new Credit("6081eb78827e48414886db15", paymentMethod, Integer.parseInt(periodicityText), Integer.parseInt(amountText), Integer.parseInt(interestText), fee);
+            Credit credit = new Credit( "6081eb78827e48414886db15", paymentMethod, Integer.parseInt(periodicityText), Integer.parseInt(amountText), Integer.parseInt(interestText), fee);
 
             CreateCreditSubmit(credit);
         });
@@ -83,7 +83,7 @@ public class LoanFragment extends Fragment {
         return root;
     }
 
-    private double Fee(int periodicity, int amount, int interest) {
+    private float Fee(int periodicity, int amount, int interest) {
         return (amount/periodicity) + interest;
     }
 

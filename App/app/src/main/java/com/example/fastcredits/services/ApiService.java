@@ -60,12 +60,9 @@ public interface ApiService {
     @GET("admins/allUsersAccounts")
     Call<AllUsers> getAllUsersAccounts();
 
-<<<<<<< HEAD
     @POST("prestamista/createCredit")
     Call<ApiResponse> createCredit(@Body Credit credit);
-=======
     @GET("prestamista/getCredits/{id}")
     Call<AllCredits> getCredits(@Path("id") String id);
 
->>>>>>> 7603965205a5c6433c8066ec5b981c3f4441bdcb
 }

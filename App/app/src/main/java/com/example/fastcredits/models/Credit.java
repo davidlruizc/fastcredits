@@ -2,14 +2,10 @@ package com.example.fastcredits.models;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
 import java.util.Date;
 
 public class Credit {
-
-    @SerializedName("client")
-    @Expose
-    private String client;
-
     @SerializedName("_id")
     @Expose
     private String id;
@@ -24,20 +20,6 @@ public class Credit {
 
     @SerializedName("amount")
     @Expose
-    private int amount;
-
-    @SerializedName("interest")
-    @Expose
-    private int interest;
-
-    @SerializedName("fee")
-    @Expose
-    private double fee;
-
-    public Credit(String client, String paymentMethod, int periodicity, int amount, int interest, double fee) {
-        super();
-
-        this.client = client;
     private float amount;
 
     @SerializedName("interest")
@@ -78,7 +60,7 @@ public class Credit {
         return date;
     }
 
-    public Credit(String id, String paymentMethod, int periodicity, float amount, float interest, float fee, Date date){
+    public Credit(String id, String paymentMethod, int periodicity, float amount, float interest, float fee){
         this.id = id;
         this.paymentMethod = paymentMethod;
         this.periodicity = periodicity;
